@@ -1,0 +1,9 @@
+is_global = true
+build_property.IsMSTestTestAdapterReferenced = true
+build_property.RootNamespace = LibraryManagement.Tests
+build_property.ProjectDir = C:\Users\hasvv\source\repos\Wipro_NGA_LibrarySystem\LibraryManagement.Tests\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

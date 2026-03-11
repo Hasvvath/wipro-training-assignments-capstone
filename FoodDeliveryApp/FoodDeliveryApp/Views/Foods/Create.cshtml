@@ -1,0 +1,58 @@
+﻿@model FoodDeliveryApp.Models.Food
+
+@{
+    ViewData["Title"] = "Create Food";
+}
+
+<h1>Create Food</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <!-- Category Dropdown -->
+            <div class="form-group mb-3">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId"
+                        class="form-control"
+                        asp-items="@(new Microsoft.AspNetCore.Mvc.Rendering.SelectList(ViewBag.Categories, "Id", "Name"))">
+                    <option value="">-- Select Category --</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            <!-- Name -->
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+            </div>
+
+            <!-- Price -->
+            <div class="form-group mb-3">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create</button>
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

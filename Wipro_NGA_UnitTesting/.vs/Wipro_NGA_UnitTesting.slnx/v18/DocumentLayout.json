@@ -1,0 +1,60 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hasvv\\source\\repos\\Wipro_NGA_UnitTesting\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{46425B2A-E5CA-4C21-838E-AE1BB5446F5B}|..\\Training1\\CalculatorLib\\CalculatorLib.csproj|c:\\users\\hasvv\\source\\repos\\training1\\calculatorlib\\calculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7CA4BB8-7A56-ABB4-A985-6C96834E502C}|..\\Training1\\CalculatorLib.Tests\\CalculatorLib.Tests.csproj|c:\\users\\hasvv\\source\\repos\\training1\\calculatorlib.tests\\calculatortests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Calculator.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\Training1\\CalculatorLib\\Calculator.cs",
+              "RelativeDocumentMoniker": "..\\Training1\\CalculatorLib\\Calculator.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\Training1\\CalculatorLib\\Calculator.cs",
+              "RelativeToolTip": "..\\Training1\\CalculatorLib\\Calculator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T05:11:21.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CalculatorTests.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\Training1\\CalculatorLib.Tests\\CalculatorTests.cs",
+              "RelativeDocumentMoniker": "..\\Training1\\CalculatorLib.Tests\\CalculatorTests.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\Training1\\CalculatorLib.Tests\\CalculatorTests.cs",
+              "RelativeToolTip": "..\\Training1\\CalculatorLib.Tests\\CalculatorTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T05:10:57.176Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,334 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\wiprosolidassignment.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\wiprosolidassignment.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\models\\inventoryreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\models\\inventoryreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\models\\salesreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\models\\salesreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\models\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\models\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\services\\documentfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\services\\documentfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\models\\worddocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\models\\worddocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\models\\pdfdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\models\\pdfdocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\interfaces\\idocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\interfaces\\idocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\services\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\services\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\services\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\services\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\formatters\\excelformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\formatters\\excelformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\formatters\\pdfformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\formatters\\pdfformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\services\\reportsaver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\services\\reportsaver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\services\\reportgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\services\\reportgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\interfaces\\ireportformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\interfaces\\ireportformatter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\interfaces\\ireportsaver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\interfaces\\ireportsaver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|c:\\users\\hasvv\\source\\repos\\wiprosolidassignment\\wiprosolidassignment\\interfaces\\ireportgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174A8A6E-3EB7-417F-8ECC-D6822E81CD39}|WiproSolidAssignment\\WiproSolidAssignment.csproj|solutionrelative:wiprosolidassignment\\interfaces\\ireportgenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WiproSolidAssignment",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\WiproSolidAssignment.csproj",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\WiproSolidAssignment.csproj",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\WiproSolidAssignment.csproj",
+              "RelativeToolTip": "WiproSolidAssignment\\WiproSolidAssignment.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-23T06:47:24.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "InventoryReport.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Models\\InventoryReport.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Models\\InventoryReport.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Models\\InventoryReport.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Models\\InventoryReport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:46:00.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SalesReport.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Models\\SalesReport.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Models\\SalesReport.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Models\\SalesReport.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Models\\SalesReport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:45:44.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Report.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Models\\Report.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Models\\Report.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Models\\Report.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Models\\Report.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:45:30.261Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WordDocument.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Models\\WordDocument.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Models\\WordDocument.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Models\\WordDocument.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Models\\WordDocument.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:42:54.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PdfDocument.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Models\\PdfDocument.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Models\\PdfDocument.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Models\\PdfDocument.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Models\\PdfDocument.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:42:37.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IDocument.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Interfaces\\IDocument.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Interfaces\\IDocument.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Interfaces\\IDocument.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Interfaces\\IDocument.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:42:23.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Program.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Program.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Program.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Program.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAADwvx4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:35:48.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DocumentFactory.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Services\\DocumentFactory.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Services\\DocumentFactory.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Services\\DocumentFactory.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Services\\DocumentFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:43:12.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Logger.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Services\\Logger.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Services\\Logger.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Services\\Logger.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Services\\Logger.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:41:59.741Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ReportService.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Services\\ReportService.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Services\\ReportService.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Services\\ReportService.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Services\\ReportService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAADwvxwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:41:24.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ExcelFormatter.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Formatters\\ExcelFormatter.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Formatters\\ExcelFormatter.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Formatters\\ExcelFormatter.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Formatters\\ExcelFormatter.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAzwAoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:40:51.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PdfFormatter.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Formatters\\PdfFormatter.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Formatters\\PdfFormatter.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Formatters\\PdfFormatter.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Formatters\\PdfFormatter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:40:36.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ReportSaver.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Services\\ReportSaver.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Services\\ReportSaver.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Services\\ReportSaver.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Services\\ReportSaver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:40:18.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ReportGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Services\\ReportGenerator.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Services\\ReportGenerator.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Services\\ReportGenerator.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Services\\ReportGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:39:56.029Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IReportFormatter.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Interfaces\\IReportFormatter.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Interfaces\\IReportFormatter.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Interfaces\\IReportFormatter.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Interfaces\\IReportFormatter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:39:35.271Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IReportSaver.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Interfaces\\IReportSaver.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Interfaces\\IReportSaver.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Interfaces\\IReportSaver.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Interfaces\\IReportSaver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:38:22.151Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IReportGenerator.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Interfaces\\IReportGenerator.cs",
+              "RelativeDocumentMoniker": "WiproSolidAssignment\\Interfaces\\IReportGenerator.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproSolidAssignment\\WiproSolidAssignment\\Interfaces\\IReportGenerator.cs",
+              "RelativeToolTip": "WiproSolidAssignment\\Interfaces\\IReportGenerator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-23T06:38:01.803Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

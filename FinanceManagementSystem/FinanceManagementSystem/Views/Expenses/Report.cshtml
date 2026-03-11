@@ -1,0 +1,27 @@
+﻿@model IEnumerable<FinanceManagementSystem.Models.Expense>
+@{
+    ViewData["Title"] = "Expense Report";
+}
+
+<h2>Expense Report</h2>
+
+<form method="get" class="form-inline mb-3">
+    <input name="fromDate" type="date" value="@ViewData["fromDate"]" class="form-control mr-2" />
+    <input name="toDate" type="date" value="@ViewData["toDate"]" class="form-control mr-2" />
+    <button class="btn btn-primary" type="submit">Generate</button>
+</form>
+
+<table class="table">
+    <thead><tr><th>User</th><th>Category</th><th>Amount</th><th>Date</th></tr></thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.User?.Username</td>
+                <td>@e.Category?.CategoryName</td>
+                <td>@e.Amount</td>
+                <td>@e.Date.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<FinanceManagementSystem.Models.Expense>
+
+@{
+    ViewData["Title"] = "User Expenses";
+}
+
+<h2>Expenses for @ViewBag.UserName</h2>
+
+<p>
+    <a class="btn btn-secondary" href="/Users">Back to Users</a>
+    <a class="btn btn-primary" href="/Expenses/Create">Add Expense</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.Category?.CategoryName</td>
+                <td>@e.Amount</td>
+                <td>@e.Date.ToShortDateString()</td>
+                <td>@e.Description</td>
+                <td>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@e.ExpenseId">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@e.ExpenseId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <p>No expenses found for this user.</p>
+}

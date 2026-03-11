@@ -1,0 +1,11 @@
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\bin\Debug\net10.0\UserManagementApp.deps.json
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\bin\Debug\net10.0\UserManagementApp.dll
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\bin\Debug\net10.0\UserManagementApp.pdb
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\obj\Debug\net10.0\UserManagementApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\obj\Debug\net10.0\UserManagementApp.AssemblyInfoInputs.cache
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\obj\Debug\net10.0\UserManagementApp.AssemblyInfo.cs
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\obj\Debug\net10.0\UserManagementApp.csproj.CoreCompileInputs.cache
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\obj\Debug\net10.0\UserManagementApp.dll
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\obj\Debug\net10.0\refint\UserManagementApp.dll
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\obj\Debug\net10.0\UserManagementApp.pdb
+C:\Users\hasvv\source\repos\UserManagementApp\UserManagementApp\obj\Debug\net10.0\ref\UserManagementApp.dll

@@ -1,0 +1,113 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D795A5-B303-4856-868D-A4E9C8A93369}|WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj|c:\\users\\hasvv\\source\\repos\\wipronga_middlewaredemo\\wipronga_middlewaredemo\\wipronga_middlewaredemo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{E2D795A5-B303-4856-868D-A4E9C8A93369}|WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj|solutionrelative:wipronga_middlewaredemo\\wipronga_middlewaredemo.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D795A5-B303-4856-868D-A4E9C8A93369}|WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj|c:\\users\\hasvv\\source\\repos\\wipronga_middlewaredemo\\wipronga_middlewaredemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2D795A5-B303-4856-868D-A4E9C8A93369}|WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj|solutionrelative:wipronga_middlewaredemo\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D795A5-B303-4856-868D-A4E9C8A93369}|WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj|c:\\users\\hasvv\\source\\repos\\wipronga_middlewaredemo\\wipronga_middlewaredemo\\root\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{E2D795A5-B303-4856-868D-A4E9C8A93369}|WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj|solutionrelative:wipronga_middlewaredemo\\root\\script.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D795A5-B303-4856-868D-A4E9C8A93369}|WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj|c:\\users\\hasvv\\source\\repos\\wipronga_middlewaredemo\\wipronga_middlewaredemo\\root\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{E2D795A5-B303-4856-868D-A4E9C8A93369}|WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj|solutionrelative:wipronga_middlewaredemo\\root\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2D795A5-B303-4856-868D-A4E9C8A93369}|WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj|c:\\users\\hasvv\\source\\repos\\wipronga_middlewaredemo\\wipronga_middlewaredemo\\root\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E2D795A5-B303-4856-868D-A4E9C8A93369}|WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj|solutionrelative:wipronga_middlewaredemo\\root\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WiproNGA_MiddlewareDemo",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj",
+              "RelativeDocumentMoniker": "WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj",
+              "RelativeToolTip": "WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-15T06:17:35.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "script.js",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo\\root\\script.js",
+              "RelativeDocumentMoniker": "WiproNGA_MiddlewareDemo\\root\\script.js",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo\\root\\script.js",
+              "RelativeToolTip": "WiproNGA_MiddlewareDemo\\root\\script.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-02-15T06:14:30.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo\\root\\style.css",
+              "RelativeDocumentMoniker": "WiproNGA_MiddlewareDemo\\root\\style.css",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo\\root\\style.css",
+              "RelativeToolTip": "WiproNGA_MiddlewareDemo\\root\\style.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-15T06:14:03.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo\\root\\index.html",
+              "RelativeDocumentMoniker": "WiproNGA_MiddlewareDemo\\root\\index.html",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo\\root\\index.html",
+              "RelativeToolTip": "WiproNGA_MiddlewareDemo\\root\\index.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-02-15T06:13:40.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo\\Program.cs",
+              "RelativeDocumentMoniker": "WiproNGA_MiddlewareDemo\\Program.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\WiproNGA_MiddlewareDemo\\WiproNGA_MiddlewareDemo\\Program.cs",
+              "RelativeToolTip": "WiproNGA_MiddlewareDemo\\Program.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T06:10:58.93Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

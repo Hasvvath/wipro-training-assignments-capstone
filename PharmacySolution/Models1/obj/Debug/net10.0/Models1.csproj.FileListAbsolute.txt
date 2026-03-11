@@ -1,0 +1,11 @@
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\bin\Debug\net10.0\Models1.deps.json
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\bin\Debug\net10.0\Models1.dll
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\bin\Debug\net10.0\Models1.pdb
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\obj\Debug\net10.0\Models1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\obj\Debug\net10.0\Models1.AssemblyInfoInputs.cache
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\obj\Debug\net10.0\Models1.AssemblyInfo.cs
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\obj\Debug\net10.0\Models1.csproj.CoreCompileInputs.cache
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\obj\Debug\net10.0\Models1.dll
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\obj\Debug\net10.0\refint\Models1.dll
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\obj\Debug\net10.0\Models1.pdb
+C:\Users\hasvv\source\repos\PharmacySolution\Models1\obj\Debug\net10.0\ref\Models1.dll

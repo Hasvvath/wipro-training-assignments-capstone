@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="DAL/DAL.csproj" />
+  <Project Path="Models1/Models1.csproj" />
+  <Project Path="Pharmacy/Pharmacy.csproj" />
+</Solution>

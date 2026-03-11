@@ -1,0 +1,33 @@
+﻿@model IEnumerable<FinanceManagementSystem.Models.Expense>
+@{
+    ViewData["Title"] = "Expenses";
+}
+
+<h2>Expenses</h2>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add Expense</a>
+    <a class="btn btn-secondary" asp-action="Report">Report</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr><th>User</th><th>Category</th><th>Amount</th><th>Date</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.User?.Username</td>
+                <td>@e.Category?.CategoryName</td>
+                <td>@e.Amount</td>
+                <td>@e.Date.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@e.ExpenseId">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@e.ExpenseId">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@e.ExpenseId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

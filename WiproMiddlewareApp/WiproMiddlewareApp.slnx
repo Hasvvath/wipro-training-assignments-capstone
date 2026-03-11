@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WiproMiddlewareApp/WiproMiddlewareApp.csproj" />
+  <Project Path="WiproRazorApp/WiproRazorApp.csproj" />
+</Solution>

@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Signup";
+}
+
+<h2>Signup</h2>
+
+@if (TempData["Msg"] != null)
+{
+    <div class="alert alert-success">@TempData["Msg"]</div>
+}
+
+<form method="post" asp-action="Signup">
+    <select id="partyDropdown" name="partyId" class="form-control">
+        <option value="">-- Select Party --</option>
+        @foreach (var item in ViewBag.Parties)
+        {
+            <option value="@item.Value">@item.Text</option>
+        }
+    </select>
+
+    <br />
+
+    <div id="signupDiv" style="display:none;">
+        <button type="submit" class="btn btn-success">Signup</button>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $("#partyDropdown").change(function () {
+        var partyId = $(this).val();
+
+        $.ajax({
+        url: "/Parties/AllowSignUp",
+        type: "GET",
+        data: { partyId: partyId },
+        success: function (result) {
+        if (result === "Internal") {
+        $("#signupDiv").show();
+        } else {
+        $("#signupDiv").hide();
+        }
+        }
+        });
+        });
+    </script>
+}

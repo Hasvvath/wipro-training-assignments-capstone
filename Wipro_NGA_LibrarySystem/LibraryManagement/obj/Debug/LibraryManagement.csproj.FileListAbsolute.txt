@@ -1,0 +1,7 @@
+C:\Users\hasvv\source\repos\Wipro_NGA_LibrarySystem\LibraryManagement\bin\Debug\LibraryManagement.exe.config
+C:\Users\hasvv\source\repos\Wipro_NGA_LibrarySystem\LibraryManagement\bin\Debug\LibraryManagement.exe
+C:\Users\hasvv\source\repos\Wipro_NGA_LibrarySystem\LibraryManagement\bin\Debug\LibraryManagement.pdb
+C:\Users\hasvv\source\repos\Wipro_NGA_LibrarySystem\LibraryManagement\obj\Debug\LibraryManagement.csproj.AssemblyReference.cache
+C:\Users\hasvv\source\repos\Wipro_NGA_LibrarySystem\LibraryManagement\obj\Debug\LibraryManagement.csproj.CoreCompileInputs.cache
+C:\Users\hasvv\source\repos\Wipro_NGA_LibrarySystem\LibraryManagement\obj\Debug\LibraryManagement.exe
+C:\Users\hasvv\source\repos\Wipro_NGA_LibrarySystem\LibraryManagement\obj\Debug\LibraryManagement.pdb

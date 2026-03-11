@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SecureUserApp.Tests/SecureUserApp.Tests.csproj" />
+  <Project Path="SecureUserApp/SecureUserApp.csproj" />
+</Solution>

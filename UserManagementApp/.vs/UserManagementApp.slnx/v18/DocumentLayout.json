@@ -1,0 +1,93 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hasvv\\source\\repos\\UserManagementApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{06D750BC-3FC3-FA48-FFDF-B2F0468E83D3}|UserManagementApp.Tests\\UserManagementApp.Tests.csproj|c:\\users\\hasvv\\source\\repos\\usermanagementapp\\usermanagementapp.tests\\userservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{06D750BC-3FC3-FA48-FFDF-B2F0468E83D3}|UserManagementApp.Tests\\UserManagementApp.Tests.csproj|solutionrelative:usermanagementapp.tests\\userservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E162EEA-D00E-616E-EBB5-2CCF485D8DB6}|UserManagementApp\\UserManagementApp.csproj|c:\\users\\hasvv\\source\\repos\\usermanagementapp\\usermanagementapp\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E162EEA-D00E-616E-EBB5-2CCF485D8DB6}|UserManagementApp\\UserManagementApp.csproj|solutionrelative:usermanagementapp\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E162EEA-D00E-616E-EBB5-2CCF485D8DB6}|UserManagementApp\\UserManagementApp.csproj|c:\\users\\hasvv\\source\\repos\\usermanagementapp\\usermanagementapp\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E162EEA-D00E-616E-EBB5-2CCF485D8DB6}|UserManagementApp\\UserManagementApp.csproj|solutionrelative:usermanagementapp\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E162EEA-D00E-616E-EBB5-2CCF485D8DB6}|UserManagementApp\\UserManagementApp.csproj|c:\\users\\hasvv\\source\\repos\\usermanagementapp\\usermanagementapp\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E162EEA-D00E-616E-EBB5-2CCF485D8DB6}|UserManagementApp\\UserManagementApp.csproj|solutionrelative:usermanagementapp\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserServiceTests.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\UserManagementApp\\UserManagementApp.Tests\\UserServiceTests.cs",
+              "RelativeDocumentMoniker": "UserManagementApp.Tests\\UserServiceTests.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\UserManagementApp\\UserManagementApp.Tests\\UserServiceTests.cs",
+              "RelativeToolTip": "UserManagementApp.Tests\\UserServiceTests.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAAADgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T04:15:31.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\UserManagementApp\\UserManagementApp\\UserService.cs",
+              "RelativeDocumentMoniker": "UserManagementApp\\UserService.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\UserManagementApp\\UserManagementApp\\UserService.cs",
+              "RelativeToolTip": "UserManagementApp\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T04:14:54.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\UserManagementApp\\UserManagementApp\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "UserManagementApp\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\UserManagementApp\\UserManagementApp\\IUserRepository.cs",
+              "RelativeToolTip": "UserManagementApp\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T04:14:36.757Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\UserManagementApp\\UserManagementApp\\User.cs",
+              "RelativeDocumentMoniker": "UserManagementApp\\User.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\UserManagementApp\\UserManagementApp\\User.cs",
+              "RelativeToolTip": "UserManagementApp\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T04:14:08.777Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

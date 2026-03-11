@@ -1,0 +1,300 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\pharmacy\\controllers\\api\\pharmaciescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|solutionrelative:pharmacy\\controllers\\api\\pharmaciescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\pharmacy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|solutionrelative:pharmacy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\pharmacy\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|solutionrelative:pharmacy\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\pharmacy\\data\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|solutionrelative:pharmacy\\data\\roleseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\pharmacy\\controllers\\pharmaciescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|solutionrelative:pharmacy\\controllers\\pharmaciescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\pharmacy\\data\\userseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|solutionrelative:pharmacy\\data\\userseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{348D837A-CFCA-42D9-A488-024A7AE0A020}|DAL\\DAL.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\dal\\dbcontext\\pharmacycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{348D837A-CFCA-42D9-A488-024A7AE0A020}|DAL\\DAL.csproj|solutionrelative:dal\\dbcontext\\pharmacycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{348D837A-CFCA-42D9-A488-024A7AE0A020}|DAL\\DAL.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\dal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{348D837A-CFCA-42D9-A488-024A7AE0A020}|DAL\\DAL.csproj|solutionrelative:dal\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\pharmacy\\data\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|solutionrelative:pharmacy\\data\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{612FED22-812E-4901-88BD-294DC24B22D7}|Models1\\Models1.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\models1\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{612FED22-812E-4901-88BD-294DC24B22D7}|Models1\\Models1.csproj|solutionrelative:models1\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{612FED22-812E-4901-88BD-294DC24B22D7}|Models1\\Models1.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\models1\\pharmacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{612FED22-812E-4901-88BD-294DC24B22D7}|Models1\\Models1.csproj|solutionrelative:models1\\pharmacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\pharmacy\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|solutionrelative:pharmacy\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\DAL\\Migrations\\20260219073216_InitialCreate_Pharmacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DAL\\Migrations\\20260219073216_InitialCreate_Pharmacy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\DAL\\Migrations\\20260219072614_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DAL\\Migrations\\20260219072614_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\pharmacy\\pharmacy.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{63C13FE8-00A8-411D-982C-0235CB0D1DE3}|Pharmacy\\Pharmacy.csproj|solutionrelative:pharmacy\\pharmacy.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{612FED22-812E-4901-88BD-294DC24B22D7}|Models1\\Models1.csproj|c:\\users\\hasvv\\source\\repos\\pharmacysolution\\models1\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{612FED22-812E-4901-88BD-294DC24B22D7}|Models1\\Models1.csproj|solutionrelative:models1\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RoleSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Data\\RoleSeeder.cs",
+              "RelativeDocumentMoniker": "Pharmacy\\Data\\RoleSeeder.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Data\\RoleSeeder.cs",
+              "RelativeToolTip": "Pharmacy\\Data\\RoleSeeder.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwA4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T10:59:18.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PharmaciesController.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Controllers\\PharmaciesController.cs",
+              "RelativeDocumentMoniker": "Pharmacy\\Controllers\\PharmaciesController.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Controllers\\PharmaciesController.cs",
+              "RelativeToolTip": "Pharmacy\\Controllers\\PharmaciesController.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAIwF0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T09:20:56.124Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApplicationDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Pharmacy\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Pharmacy\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T09:15:21.676Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PharmaciesController.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Controllers\\API\\PharmaciesController.cs",
+              "RelativeDocumentMoniker": "Pharmacy\\Controllers\\API\\PharmaciesController.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Controllers\\API\\PharmaciesController.cs",
+              "RelativeToolTip": "Pharmacy\\Controllers\\API\\PharmaciesController.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAUwEYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T08:59:13.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Program.cs",
+              "RelativeDocumentMoniker": "Pharmacy\\Program.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Program.cs",
+              "RelativeToolTip": "Pharmacy\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T07:19:57.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\appsettings.json",
+              "RelativeDocumentMoniker": "Pharmacy\\appsettings.json",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\appsettings.json",
+              "RelativeToolTip": "Pharmacy\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-19T07:18:46.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Data\\UserSeeder.cs",
+              "RelativeDocumentMoniker": "Pharmacy\\Data\\UserSeeder.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Data\\UserSeeder.cs",
+              "RelativeToolTip": "Pharmacy\\Data\\UserSeeder.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAgwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T11:00:57.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Medicine.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Models1\\Medicine.cs",
+              "RelativeDocumentMoniker": "Models1\\Medicine.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Models1\\Medicine.cs",
+              "RelativeToolTip": "Models1\\Medicine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T07:16:39.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\DAL\\Class1.cs",
+              "RelativeDocumentMoniker": "DAL\\Class1.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\DAL\\Class1.cs",
+              "RelativeToolTip": "DAL\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T07:10:51.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PharmacyContext.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\DAL\\DbContext\\PharmacyContext.cs",
+              "RelativeDocumentMoniker": "DAL\\DbContext\\PharmacyContext.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\DAL\\DbContext\\PharmacyContext.cs",
+              "RelativeToolTip": "DAL\\DbContext\\PharmacyContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T07:17:44.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20260219072614_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\DAL\\Migrations\\20260219072614_InitialCreate.cs",
+              "RelativeDocumentMoniker": "DAL\\Migrations\\20260219072614_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\DAL\\Migrations\\20260219072614_InitialCreate.cs",
+              "RelativeToolTip": "DAL\\Migrations\\20260219072614_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T07:26:14.941Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Pharmacy.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Models1\\Pharmacy.cs",
+              "RelativeDocumentMoniker": "Models1\\Pharmacy.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Models1\\Pharmacy.cs",
+              "RelativeToolTip": "Models1\\Pharmacy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T07:16:01.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20260219073216_InitialCreate_Pharmacy.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\DAL\\Migrations\\20260219073216_InitialCreate_Pharmacy.cs",
+              "RelativeDocumentMoniker": "DAL\\Migrations\\20260219073216_InitialCreate_Pharmacy.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\DAL\\Migrations\\20260219073216_InitialCreate_Pharmacy.cs",
+              "RelativeToolTip": "DAL\\Migrations\\20260219073216_InitialCreate_Pharmacy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T07:32:17.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Pharmacy\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Pharmacy\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T08:48:40.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Pharmacy",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Pharmacy.csproj",
+              "RelativeDocumentMoniker": "Pharmacy\\Pharmacy.csproj",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Pharmacy\\Pharmacy.csproj",
+              "RelativeToolTip": "Pharmacy\\Pharmacy.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-19T07:12:54.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Models1\\Class1.cs",
+              "RelativeDocumentMoniker": "Models1\\Class1.cs",
+              "ToolTip": "C:\\Users\\hasvv\\source\\repos\\PharmacySolution\\Models1\\Class1.cs",
+              "RelativeToolTip": "Models1\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T07:11:37.774Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

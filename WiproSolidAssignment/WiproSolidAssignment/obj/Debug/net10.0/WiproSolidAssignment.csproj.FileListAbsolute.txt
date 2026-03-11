@@ -1,0 +1,14 @@
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\bin\Debug\net10.0\WiproSolidAssignment.exe
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\bin\Debug\net10.0\WiproSolidAssignment.deps.json
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\bin\Debug\net10.0\WiproSolidAssignment.runtimeconfig.json
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\bin\Debug\net10.0\WiproSolidAssignment.dll
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\bin\Debug\net10.0\WiproSolidAssignment.pdb
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\obj\Debug\net10.0\WiproSolidAssignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\obj\Debug\net10.0\WiproSolidAssignment.AssemblyInfoInputs.cache
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\obj\Debug\net10.0\WiproSolidAssignment.AssemblyInfo.cs
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\obj\Debug\net10.0\WiproSolidAssignment.csproj.CoreCompileInputs.cache
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\obj\Debug\net10.0\WiproSolidAssignment.dll
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\obj\Debug\net10.0\refint\WiproSolidAssignment.dll
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\obj\Debug\net10.0\WiproSolidAssignment.pdb
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\obj\Debug\net10.0\WiproSolidAssignment.genruntimeconfig.cache
+C:\Users\hasvv\source\repos\WiproSolidAssignment\WiproSolidAssignment\obj\Debug\net10.0\ref\WiproSolidAssignment.dll
