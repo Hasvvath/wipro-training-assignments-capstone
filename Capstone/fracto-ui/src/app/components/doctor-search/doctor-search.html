@@ -1,0 +1,47 @@
+<section class="page-shell">
+  <div class="page-header">
+    <p class="section-label">Doctor Directory</p>
+    <h2>Search Doctors</h2>
+    <p>Filter doctors by city, view their profile image, and move straight into booking when you find the right match.</p>
+  </div>
+
+  <div class="filter-card">
+    <label>
+      <span>City</span>
+      <select name="city" [(ngModel)]="selectedCity" (ngModelChange)="onCityChange()">
+        <option value="">All Cities</option>
+        @for (city of cities(); track city) {
+          <option [value]="city">{{ city }}</option>
+        }
+      </select>
+    </label>
+  </div>
+
+  @if (isLoading()) {
+    <p class="info-banner">Loading doctors...</p>
+  } @else if (message()) {
+    <p class="info-banner">{{ message() }}</p>
+  }
+
+  <div class="doctor-grid">
+    @for (doctor of doctors(); track doctor.id) {
+      <article class="doctor-card">
+        <div class="doctor-image-wrapper">
+          @if (doctor.profileImage) {
+            <img [src]="doctor.profileImage" [alt]="doctorName(doctor)" class="doctor-image" />
+          } @else {
+            <div class="doctor-image placeholder">No Image</div>
+          }
+        </div>
+        <div>
+          <h3>{{ doctorName(doctor) }}</h3>
+          <p><strong>Hospital:</strong> {{ doctor.hospitalName || 'Not provided' }}</p>
+          <p><strong>City:</strong> {{ doctor.city || 'Not provided' }}</p>
+          <p><strong>Specialization:</strong> {{ specialization(doctor) }}</p>
+          <p><strong>Rating:</strong> {{ doctor.rating ?? 'Not rated yet' }}</p>
+        </div>
+        <button type="button" (click)="bookAppointment(doctor.id)">Book Appointment</button>
+      </article>
+    }
+  </div>
+</section>

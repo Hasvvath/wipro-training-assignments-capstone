@@ -1,0 +1,29 @@
+<section class="page-shell">
+  <div class="page-header">
+    <p class="section-label">Appointment Overview</p>
+    <h2>Appointment List</h2>
+    <p>Review your scheduled consultations, their dates, and current status.</p>
+  </div>
+
+  @if (isLoading()) {
+    <p class="info-banner">Loading appointments...</p>
+  } @else if (message()) {
+    <p class="info-banner">{{ message() }}</p>
+  }
+
+  <div class="appointment-list">
+    @for (appointment of appointments(); track appointment.appointmentId || appointment.id || $index) {
+      <article class="appointment-card">
+        <h3>{{ doctorName(appointment) }}</h3>
+        <p><strong>Date:</strong> {{ appointmentDate(appointment) | date:'mediumDate' }}</p>
+        <p><strong>Time:</strong> {{ appointment.timeSlot || '-' }}</p>
+        <p><strong>Status:</strong> {{ effectiveStatus(appointment) }}</p>
+        @if (canCancel(appointment)) {
+          <div class="actions-row">
+            <button type="button" class="cancel-btn" (click)="cancelAppointment(appointment)">Cancel Appointment</button>
+          </div>
+        }
+      </article>
+    }
+  </div>
+</section>

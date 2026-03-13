@@ -1,0 +1,238 @@
+<section class="page-shell">
+  <div class="page-header">
+    <p class="section-label">Administration</p>
+    <h2>Admin Panel</h2>
+    <p>Manage doctor records, users, and patient bookings from one place.</p>
+  </div>
+
+  @if (!isAdmin()) {
+    <section class="page-card form-card narrow-card">
+      <div>
+        <p class="section-label">Secure Access</p>
+        <h3>Admin Login</h3>
+        <p class="intro">Use an account whose backend role is set to <strong>Admin</strong>.</p>
+      </div>
+
+      <form (ngSubmit)="onAdminLogin()" #adminLoginForm="ngForm">
+        <label>
+          <span>Email</span>
+          <input type="email" name="adminEmail" [(ngModel)]="adminEmail" required email placeholder="Enter admin email" />
+        </label>
+
+        <label>
+          <span>Password</span>
+          <input type="password" name="adminPassword" [(ngModel)]="adminPassword" required placeholder="Enter admin password" />
+        </label>
+
+        <button type="submit" [disabled]="isSubmitting() || adminLoginForm.invalid">
+          {{ isSubmitting() ? 'Signing In...' : 'Admin Login' }}
+        </button>
+      </form>
+    </section>
+  } @else {
+    <div class="panel-head sticky-head page-card">
+      <div>
+        <p class="section-label">Welcome</p>
+        <h3>{{ currentUser()?.name || currentUser()?.email }}</h3>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="secondary-btn" (click)="loadDashboard()">Refresh</button>
+        <button type="button" class="secondary-btn" (click)="logout()">Logout</button>
+      </div>
+    </div>
+
+    <div class="admin-grid">
+      <section class="page-card form-card">
+        <div class="panel-head">
+          <div>
+            <p class="section-label">Doctor Setup</p>
+            <h3>{{ formTitle() }}</h3>
+          </div>
+          @if (editingDoctorId) {
+            <button type="button" class="secondary-btn" (click)="cancelEdit()">Cancel Edit</button>
+          }
+        </div>
+
+        <form (ngSubmit)="onSubmitDoctor()" #doctorForm="ngForm">
+          <label>
+            <span>Doctor Name</span>
+            <input type="text" name="doctorName" [(ngModel)]="doctorName" required placeholder="Enter doctor's name" />
+          </label>
+
+          <label>
+            <span>Specialization</span>
+            <input type="text" name="specialization" [(ngModel)]="specialization" required placeholder="Enter specialization" />
+          </label>
+
+          <label>
+            <span>City</span>
+            <input type="text" name="city" [(ngModel)]="city" required placeholder="Enter city" />
+          </label>
+
+          <label>
+            <span>Hospital Name</span>
+            <input type="text" name="hospitalName" [(ngModel)]="hospitalName" required placeholder="Enter hospital name" />
+          </label>
+
+          <label>
+            <span>Rating</span>
+            <input type="number" name="rating" [(ngModel)]="rating" min="0" max="5" step="0.1" placeholder="0 to 5" />
+          </label>
+
+          <label>
+            <span>Profile Picture</span>
+            <input type="file" name="image" accept="image/*" (change)="onImageSelected($event)" />
+            @if (imageName) {
+              <small class="file-name">Selected: {{ imageName }}</small>
+            }
+          </label>
+
+          <button type="submit" [disabled]="isSubmitting() || doctorForm.invalid">
+            {{ submitLabel() }}
+          </button>
+        </form>
+      </section>
+
+      <section class="page-card slot-card">
+        <p class="section-label">Daily Slot Policy</p>
+        <h3>Standard Appointment Slots</h3>
+        <ul>
+          @for (slot of slotRules; track slot) {
+            <li>{{ slot }}</li>
+          }
+        </ul>
+        <p class="note">For complete protection, the same slot limits and status transitions must stay enforced in backend validation too.</p>
+      </section>
+    </div>
+
+    <section class="page-card">
+      <div class="panel-head">
+        <div>
+          <p class="section-label">Doctor Records</p>
+          <h3>Existing Doctors</h3>
+        </div>
+        @if (isLoadingDoctors()) {
+          <span class="chip">Loading...</span>
+        }
+      </div>
+
+      <div class="doctor-admin-grid">
+        @for (doctor of doctors(); track doctor.id) {
+          <article class="doctor-admin-card">
+            <div class="doctor-admin-body">
+              @if (doctor.profileImage) {
+                <img [src]="doctor.profileImage" [alt]="doctor.name || 'Doctor'" class="thumb" />
+              } @else {
+                <div class="thumb placeholder">No Image</div>
+              }
+              <div>
+                <h4>{{ doctor.name }}</h4>
+                <p>{{ doctor.specialization }}</p>
+                <p>{{ doctor.hospitalName || 'Hospital not set' }}</p>
+                <p>{{ doctor.city || 'City not set' }}</p>
+              </div>
+            </div>
+            <div class="row-actions">
+              <button type="button" class="secondary-btn" (click)="editDoctor(doctor)">Edit</button>
+              <button type="button" class="danger-btn" (click)="deleteDoctor(doctor)">Delete</button>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="page-card">
+      <div class="panel-head">
+        <div>
+          <p class="section-label">Registered Users</p>
+          <h3>User List</h3>
+        </div>
+        @if (isLoadingUsers()) {
+          <span class="chip">Loading...</span>
+        }
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of users(); track user.userId || user.id || $index) {
+              <tr>
+                <td>{{ user.name || '-' }}</td>
+                <td>{{ user.email || '-' }}</td>
+                <td>{{ user.role || 'Patient' }}</td>
+                <td>
+                  <div class="row-actions compact-actions">
+                    <button type="button" class="danger-btn" (click)="deleteUser(user)">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="page-card">
+      <div class="panel-head">
+        <div>
+          <p class="section-label">Booking Overview</p>
+          <h3>Users And Appointments</h3>
+        </div>
+        <div class="meta-row">
+          @if (isLoadingAppointments()) {
+            <span class="chip">Appointments loading...</span>
+          }
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Doctor</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (appointment of appointments(); track appointment.appointmentId || appointment.id || $index) {
+              <tr>
+                <td>{{ userLabel(appointment.userId) }}</td>
+                <td>{{ doctorLabel(appointment) }}</td>
+                <td>{{ appointmentDate(appointment) | date:'mediumDate' }}</td>
+                <td>{{ appointment.timeSlot || '-' }}</td>
+                <td>{{ effectiveStatus(appointment) }}</td>
+                <td>
+                  <div class="row-actions compact-actions">
+                    @if (canMarkPresent(appointment)) {
+                      <button type="button" class="secondary-btn" (click)="markPresent(appointment)">Mark Present</button>
+                    }
+                    @if (canMarkAbsent(appointment)) {
+                      <button type="button" class="secondary-btn" (click)="markAbsent(appointment)">Mark Absent</button>
+                    }
+                    <button type="button" class="danger-btn" (click)="deleteAppointment(appointment)">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+  }
+
+  @if (message()) {
+    <p [class]="messageClass()">{{ message() }}</p>
+  }
+</section>

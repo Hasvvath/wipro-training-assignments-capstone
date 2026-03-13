@@ -1,0 +1,27 @@
+<section class="page-card form-card">
+  <div>
+    <p class="section-label">Account Access</p>
+    <h2>Login</h2>
+    <p class="intro">Sign in to book appointments and review your upcoming visits.</p>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" [(ngModel)]="email" required email placeholder="Enter your email" />
+    </label>
+
+    <label>
+      <span>Password</span>
+      <input type="password" name="password" [(ngModel)]="password" required placeholder="Enter your password" />
+    </label>
+
+    <button type="submit" [disabled]="isSubmitting() || loginForm.invalid">
+      {{ isSubmitting() ? 'Signing In...' : 'Login' }}
+    </button>
+  </form>
+
+  @if (message()) {
+    <p [class]="messageClass()">{{ message() }}</p>
+  }
+</section>

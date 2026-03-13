@@ -1,0 +1,34 @@
+<div class="app-shell">
+  <header class="site-header">
+    <div>
+      <p class="brand-kicker">Fracto Care</p>
+      <a routerLink="/" class="brand-title">Fracto Doctor Appointment System</a>
+    </div>
+
+    <nav class="top-nav">
+      @if (!isLoggedIn()) {
+        <a routerLink="/login" routerLinkActive="active-link">Login</a>
+        <a routerLink="/register" routerLinkActive="active-link">Register</a>
+      }
+      @if (isAdmin()) {
+        <a routerLink="/admin" routerLinkActive="active-link">Admin</a>
+      }
+      <a routerLink="/search" routerLinkActive="active-link">Search Doctors</a>
+      <a routerLink="/appointment" routerLinkActive="active-link">Book Appointment</a>
+      <a routerLink="/appointments" routerLinkActive="active-link">Appointment List</a>
+    </nav>
+
+    <div class="account-box">
+      @if (isLoggedIn()) {
+        <span>Welcome {{ userName }}</span>
+        <button type="button" (click)="logout()">Logout</button>
+      } @else {
+        <span>Welcome</span>
+      }
+    </div>
+  </header>
+
+  <main class="content-area">
+    <router-outlet></router-outlet>
+  </main>
+</div>

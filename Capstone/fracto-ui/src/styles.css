@@ -1,0 +1,50 @@
+:root {
+  color-scheme: light;
+  font-family: Arial, Helvetica, sans-serif;
+  --page-bg: #f4f9ff;
+  --page-bg-soft: #edf5ff;
+  --surface: #ffffff;
+  --surface-alt: #f7fbff;
+  --text: #10233f;
+  --muted: #59708f;
+  --primary: #4a90e2;
+  --primary-dark: #2f6fbe;
+  --border: #d7e4f4;
+  --shadow: 0 18px 40px rgba(41, 84, 138, 0.08);
+  background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, #ffffff 0%, transparent 35%),
+    linear-gradient(135deg, #f6fbff 0%, #edf5ff 52%, #e8f1ff 100%);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+main,
+section,
+article,
+header,
+div,
+nav {
+  box-sizing: border-box;
+}
+
+app-root {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}

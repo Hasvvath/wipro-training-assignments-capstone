@@ -1,0 +1,78 @@
+.page-shell {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.page-header {
+  background: var(--surface);
+  padding: 1.75rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.section-label {
+  margin: 0 0 0.5rem;
+  color: var(--primary-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.page-header h2 {
+  margin: 0;
+  color: var(--text);
+}
+
+.page-header p {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+.info-banner {
+  margin: 0;
+  padding: 1rem 1.2rem;
+  background: var(--surface);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  box-shadow: 0 10px 28px rgba(41, 84, 138, 0.06);
+}
+
+.appointment-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.appointment-card {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 1.4rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.appointment-card h3 {
+  margin: 0 0 0.75rem;
+  color: var(--text);
+}
+
+.appointment-card p {
+  margin: 0.4rem 0;
+  color: var(--muted);
+}
+
+.actions-row {
+  margin-top: 1rem;
+}
+
+.cancel-btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  background: #d74f4f;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}

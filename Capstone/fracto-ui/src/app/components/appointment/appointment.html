@@ -1,0 +1,73 @@
+<section class="page-card form-card">
+  <div>
+    <p class="section-label">Schedule Visit</p>
+    <h2>Book Appointment</h2>
+    <p class="intro">Choose a doctor, select the date, and reserve your time slot.</p>
+  </div>
+
+  @if (isLoadingDoctors()) {
+    <p class="status info">Loading doctors...</p>
+  }
+
+  @if (isLoadingAppointments()) {
+    <p class="status info">Loading booked slot data...</p>
+  }
+
+  <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
+    <label>
+      <span>City</span>
+      <select name="city" [(ngModel)]="selectedCity" (ngModelChange)="onCityChange()">
+        <option value="">All Cities</option>
+        @for (city of cities(); track city) {
+          <option [value]="city">{{ city }}</option>
+        }
+      </select>
+    </label>
+
+    <label>
+      <span>Doctor</span>
+      <select name="doctorId" [(ngModel)]="doctorId" (ngModelChange)="onDoctorChange()" required>
+        <option value="" disabled>Select a doctor</option>
+        @for (doctor of doctors(); track doctor.id) {
+          <option [value]="doctor.id">
+            {{ doctorName(doctor) }}{{ doctor.hospitalName ? ' - ' + doctor.hospitalName : '' }}{{ doctor.city ? ' - ' + doctor.city : '' }}
+          </option>
+        }
+      </select>
+    </label>
+
+    <label>
+      <span>Date</span>
+      <input type="date" name="date" [(ngModel)]="date" [min]="minDate" required />
+    </label>
+
+    <label>
+      <span>Time Slot</span>
+      <select name="timeSlot" [(ngModel)]="timeSlot" required>
+        <option value="" disabled>Select a time slot</option>
+        @for (slot of slotAvailability(); track slot.value) {
+          <option [value]="slot.value">
+            {{ slot.label }} - {{ slot.remaining }} / {{ slot.capacity }} slots left
+          </option>
+        }
+      </select>
+    </label>
+
+    @if (date && doctorId && !slotAvailability().length) {
+      <p class="status error">All slots are full for this doctor on the selected date.</p>
+    }
+
+    <div class="slot-help">
+      <p>Lunch break: 01:00 PM to 02:00 PM</p>
+      <p>Doctors are available until 09:00 PM.</p>
+    </div>
+
+    <button type="submit" [disabled]="isSubmitting() || appointmentForm.invalid || isLoadingDoctors() || isLoadingAppointments()">
+      {{ isSubmitting() ? 'Booking...' : 'Book Appointment' }}
+    </button>
+  </form>
+
+  @if (message()) {
+    <p [class]="messageClass()">{{ message() }}</p>
+  }
+</section>

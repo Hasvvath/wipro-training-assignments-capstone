@@ -1,0 +1,32 @@
+<section class="page-card form-card">
+  <div>
+    <p class="section-label">Create Account</p>
+    <h2>Register</h2>
+    <p class="intro">Set up your patient account to search doctors and schedule appointments.</p>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <label>
+      <span>Name</span>
+      <input type="text" name="name" [(ngModel)]="name" required placeholder="Enter your name" />
+    </label>
+
+    <label>
+      <span>Email</span>
+      <input type="email" name="email" [(ngModel)]="email" required email placeholder="Enter your email" />
+    </label>
+
+    <label>
+      <span>Password</span>
+      <input type="password" name="password" [(ngModel)]="password" required minlength="6" placeholder="Create a password" />
+    </label>
+
+    <button type="submit" [disabled]="isSubmitting() || registerForm.invalid">
+      {{ isSubmitting() ? 'Registering...' : 'Register' }}
+    </button>
+  </form>
+
+  @if (message()) {
+    <p [class]="messageClass()">{{ message() }}</p>
+  }
+</section>
