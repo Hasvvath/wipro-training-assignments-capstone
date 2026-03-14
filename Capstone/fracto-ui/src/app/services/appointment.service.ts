@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { API_BASE_URL } from './api.config';
+import { AxiosApiService } from './axios-api.service';
 
 export interface AppointmentPayload {
   doctorId: number;
@@ -28,19 +27,14 @@ export interface Appointment {
   providedIn: 'root'
 })
 export class AppointmentService {
-  private readonly http = inject(HttpClient);
-  private readonly apiUrl = API_BASE_URL;
+  private readonly api = inject(AxiosApiService);
 
   createAppointment(payload: AppointmentPayload): Observable<unknown> {
-    return this.http.post(`${this.apiUrl}/Appointment/book`, payload, {
-      headers: this.createHeaders()
-    });
+    return this.api.post('/Appointment/book', payload);
   }
 
   getAppointments(): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.apiUrl}/Appointment`, {
-      headers: this.createHeaders()
-    });
+    return this.api.get<Appointment[]>('/Appointment');
   }
 
   updateAppointmentStatus(id: number, appointment: Appointment, status: string): Observable<unknown> {
@@ -53,25 +47,10 @@ export class AppointmentService {
       status
     };
 
-    return this.http.put(`${this.apiUrl}/Appointment/${id}`, payload, {
-      headers: this.createHeaders()
-    });
+    return this.api.put(`/Appointment/${id}`, payload);
   }
 
   deleteAppointment(id: number): Observable<unknown> {
-    return this.http.delete(`${this.apiUrl}/Appointment/${id}`, {
-      headers: this.createHeaders()
-    });
-  }
-
-  private createHeaders(): HttpHeaders {
-    const token = localStorage.getItem('authToken');
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    if (token) {
-      headers = headers.set('Authorization', `Bearer ${token}`);
-    }
-
-    return headers;
+    return this.api.delete(`/Appointment/${id}`);
   }
 }

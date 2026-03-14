@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { API_BASE_URL, SERVER_BASE_URL } from './api.config';
+import { SERVER_BASE_URL } from './api.config';
+import { AxiosApiService } from './axios-api.service';
 
 export interface Doctor {
   id: number;
@@ -31,32 +31,31 @@ export interface CreateDoctorPayload {
   providedIn: 'root'
 })
 export class DoctorService {
-  private readonly http = inject(HttpClient);
-  private readonly apiUrl = API_BASE_URL;
+  private readonly api = inject(AxiosApiService);
   private readonly serverUrl = SERVER_BASE_URL;
 
   getDoctors(): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(`${this.apiUrl}/Doctor`).pipe(
+    return this.api.get<Doctor[]>('/Doctor').pipe(
       map((doctors) => (doctors ?? []).map((doctor, index) => this.normalizeDoctor(doctor, index)))
     );
   }
 
   getDoctorById(id: number): Observable<Doctor> {
-    return this.http.get<Doctor>(`${this.apiUrl}/Doctor/${id}`).pipe(
+    return this.api.get<Doctor>(`/Doctor/${id}`).pipe(
       map((doctor) => this.normalizeDoctor(doctor, 0))
     );
   }
 
   createDoctor(payload: CreateDoctorPayload): Observable<unknown> {
-    return this.http.post(`${this.apiUrl}/Doctor`, this.toFormData(payload));
+    return this.api.post('/Doctor', this.toFormData(payload));
   }
 
   updateDoctor(id: number, payload: CreateDoctorPayload): Observable<unknown> {
-    return this.http.put(`${this.apiUrl}/Doctor/${id}`, this.toFormData(payload));
+    return this.api.put(`/Doctor/${id}`, this.toFormData(payload));
   }
 
   deleteDoctor(id: number): Observable<unknown> {
-    return this.http.delete(`${this.apiUrl}/Doctor/${id}`);
+    return this.api.delete(`/Doctor/${id}`);
   }
 
   private toFormData(payload: CreateDoctorPayload): FormData {

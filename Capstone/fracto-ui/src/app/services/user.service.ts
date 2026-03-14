@@ -1,7 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { API_BASE_URL } from './api.config';
+import { AxiosApiService } from './axios-api.service';
 
 export interface AppUser {
   userId?: number;
@@ -15,18 +14,17 @@ export interface AppUser {
   providedIn: 'root'
 })
 export class UserService {
-  private readonly http = inject(HttpClient);
-  private readonly apiUrl = API_BASE_URL;
+  private readonly api = inject(AxiosApiService);
 
   getUsers(): Observable<AppUser[]> {
-    return this.http.get<AppUser[]>(`${this.apiUrl}/User`);
+    return this.api.get<AppUser[]>('/User');
   }
 
   updateUser(id: number, payload: Partial<AppUser>): Observable<unknown> {
-    return this.http.put(`${this.apiUrl}/User/${id}`, payload);
+    return this.api.put(`/User/${id}`, payload);
   }
 
   deleteUser(id: number): Observable<unknown> {
-    return this.http.delete(`${this.apiUrl}/User/${id}`);
+    return this.api.delete(`/User/${id}`);
   }
 }

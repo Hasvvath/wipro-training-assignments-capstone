@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { convertToParamMap, ActivatedRoute, provideRouter } from '@angular/router';
+import { of } from 'rxjs';
+import { provideStore } from '@ngrx/store';
+import { authFeatureKey, authReducer } from '../../store/auth/auth.reducer';
 import { AppointmentComponent } from './appointment';
 
 describe('AppointmentComponent', () => {
@@ -7,7 +11,17 @@ describe('AppointmentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppointmentComponent]
+      imports: [AppointmentComponent],
+      providers: [
+        provideStore({ [authFeatureKey]: authReducer }),
+        provideRouter([]),
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            queryParamMap: of(convertToParamMap({}))
+          }
+        }
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AppointmentComponent);

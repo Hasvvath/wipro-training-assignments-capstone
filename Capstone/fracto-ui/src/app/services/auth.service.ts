@@ -1,7 +1,10 @@
-import { Injectable, inject, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { Store } from '@ngrx/store';
 import { map, Observable, tap } from 'rxjs';
-import { API_BASE_URL } from './api.config';
+import { AxiosApiService } from './axios-api.service';
+import { authActions } from '../store/auth/auth.actions';
+import { selectAuthUser, selectIsAuthenticated } from '../store/auth/auth.selectors';
 
 export interface AuthUser {
   id?: number;
@@ -26,17 +29,21 @@ export interface AuthApiResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly http = inject(HttpClient);
-  private readonly apiUrl = API_BASE_URL;
-  readonly currentUser = signal<AuthUser | null>(this.readCurrentUser());
-  readonly isAuthenticated = signal<boolean>(!!this.readCurrentUser());
+  private readonly api = inject(AxiosApiService);
+  private readonly store = inject(Store);
+  readonly currentUser = toSignal(this.store.select(selectAuthUser), { initialValue: this.readCurrentUser() });
+  readonly isAuthenticated = toSignal(this.store.select(selectIsAuthenticated), { initialValue: !!this.readCurrentUser() });
+
+  constructor() {
+    this.store.dispatch(authActions['setSession']({ user: this.readCurrentUser() }));
+  }
 
   register(payload: { name: string; email: string; password: string }): Observable<unknown> {
-    return this.http.post(`${this.apiUrl}/Auth/register`, payload);
+    return this.api.post('/Auth/register', payload);
   }
 
   login(payload: { email: string; password: string }): Observable<AuthApiResponse> {
-    return this.http.post<AuthApiResponse>(`${this.apiUrl}/Auth/login`, payload).pipe(
+    return this.api.post<AuthApiResponse | string>('/Auth/login', payload).pipe(
       map((response) => this.normalizeResponse(response)),
       tap((response) => {
         const token =
@@ -47,8 +54,7 @@ export class AuthService {
         const isSuccess = response.success || !!token;
 
         if (!isSuccess) {
-          this.currentUser.set(null);
-          this.isAuthenticated.set(false);
+          this.store.dispatch(authActions['clearSession']());
           localStorage.removeItem('authToken');
           localStorage.removeItem('currentUser');
           return;
@@ -73,8 +79,7 @@ export class AuthService {
         };
 
         localStorage.setItem('currentUser', JSON.stringify(resolvedUser));
-        this.currentUser.set(resolvedUser);
-        this.isAuthenticated.set(true);
+        this.store.dispatch(authActions['setSession']({ user: resolvedUser }));
       })
     );
   }
@@ -114,8 +119,7 @@ export class AuthService {
     localStorage.removeItem('authToken');
     localStorage.removeItem('currentUser');
     localStorage.removeItem('selectedDoctorId');
-    this.currentUser.set(null);
-    this.isAuthenticated.set(false);
+    this.store.dispatch(authActions['clearSession']());
   }
 
   private readCurrentUser(): AuthUser | null {
