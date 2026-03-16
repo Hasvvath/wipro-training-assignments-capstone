@@ -49,6 +49,15 @@ export class AdminComponent implements OnInit {
   readonly currentUser = this.authService.currentUser;
   readonly messageClass = computed(() => (this.isError() ? 'status error' : 'status success'));
   readonly formTitle = computed(() => (this.editingDoctorId ? 'Edit Doctor' : 'Add New Doctor'));
+  readonly totalUsers = computed(() => this.users().length);
+  readonly totalAppointments = computed(() => this.appointments().length);
+  readonly bookedAppointments = computed(() =>
+    this.appointments().filter((appointment) => this.effectiveStatus(appointment).toLowerCase() === 'booked').length
+  );
+  readonly todayAppointments = computed(() => {
+    const today = this.formatDateKey(new Date());
+    return this.appointments().filter((appointment) => this.formatDateKey(this.appointmentDate(appointment)) === today).length;
+  });
   readonly submitLabel = computed(() => {
     if (this.isSubmitting()) {
       return this.editingDoctorId ? 'Updating...' : 'Saving...';
@@ -388,5 +397,17 @@ export class AdminComponent implements OnInit {
   private setMessage(message: string, isError: boolean): void {
     this.message.set(message);
     this.isError.set(isError);
+  }
+
+  private formatDateKey(value: Date | string): string {
+    const date = value instanceof Date ? value : new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return '';
+    }
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 }

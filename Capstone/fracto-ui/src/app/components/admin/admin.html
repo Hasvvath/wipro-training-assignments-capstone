@@ -41,6 +41,29 @@
       </div>
     </div>
 
+    <section class="stats-grid">
+      <article class="stat-card">
+        <p class="stat-title">Total Users</p>
+        <h3>{{ totalUsers() }}</h3>
+        <p>Registered user accounts</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-title">Total Appointments</p>
+        <h3>{{ totalAppointments() }}</h3>
+        <p>All appointment records</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-title">Booked Now</p>
+        <h3>{{ bookedAppointments() }}</h3>
+        <p>Appointments in booked status</p>
+      </article>
+      <article class="stat-card">
+        <p class="stat-title">Today</p>
+        <h3>{{ todayAppointments() }}</h3>
+        <p>Appointments scheduled today</p>
+      </article>
+    </section>
+
     <div class="admin-grid">
       <section class="page-card form-card">
         <div class="panel-head">

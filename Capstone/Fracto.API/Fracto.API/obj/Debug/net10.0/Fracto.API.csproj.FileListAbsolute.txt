@@ -345,10 +345,10 @@ C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.
 C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\Fracto.API.csproj.Up2Date
 C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\Fracto.API.dll
 C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\refint\Fracto.API.dll
 C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\Fracto.API.pdb
 C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\Fracto.API.genruntimeconfig.cache
 C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\ref\Fracto.API.dll
+C:\Users\hasvv\source\repos\wipro-training-assignments-capstone\Capstone\Fracto.API\Fracto.API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

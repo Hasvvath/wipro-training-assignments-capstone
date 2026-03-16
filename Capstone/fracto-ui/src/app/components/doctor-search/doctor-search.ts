@@ -25,7 +25,7 @@ export class DoctorSearchComponent implements OnInit {
   message = signal('');
   isLoading = signal(true);
 
-  /* ---------------- CITY LIST ---------------- */
+
 
   readonly cities = computed(() =>
     [...new Set(
@@ -35,7 +35,7 @@ export class DoctorSearchComponent implements OnInit {
     )].sort()
   );
 
-  /* ---------------- SPECIALIZATION LIST ---------------- */
+ 
 
   readonly specializations = computed(() =>
     [...new Set(
@@ -45,7 +45,6 @@ export class DoctorSearchComponent implements OnInit {
     )].sort()
   );
 
-  /* ---------------- FILTERED DOCTORS ---------------- */
 
   readonly doctors = computed(() => {
     const city = this.selectedCity().trim().toLowerCase();
@@ -61,13 +60,12 @@ export class DoctorSearchComponent implements OnInit {
     });
   });
 
-  /* ---------------- INIT ---------------- */
+
 
   ngOnInit(): void {
     this.loadDoctors();
   }
 
-  /* ---------------- LOAD DOCTORS ---------------- */
 
   loadDoctors(): void {
 
@@ -94,7 +92,7 @@ export class DoctorSearchComponent implements OnInit {
     });
   }
 
-  /* ---------------- FILTER CHANGE ---------------- */
+ 
 
   onCityChange(city: string): void {
     this.selectedCity.set(city);
@@ -116,7 +114,7 @@ export class DoctorSearchComponent implements OnInit {
     this.message.set(filteredDoctors.length ? '' : 'No doctors match the selected filters.');
   }
 
-  /* ---------------- BOOK APPOINTMENT ---------------- */
+
 
   bookAppointment(doctorId: number): void {
 
@@ -134,7 +132,7 @@ export class DoctorSearchComponent implements OnInit {
     });
   }
 
-  /* ---------------- HELPERS ---------------- */
+ 
 
   doctorName(doctor: Doctor): string {
     return doctor.name || doctor.doctorName || 'Doctor';
