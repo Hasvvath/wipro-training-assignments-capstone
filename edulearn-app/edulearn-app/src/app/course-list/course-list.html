@@ -1,0 +1,13 @@
+<h2>Course List</h2>
+
+<ul>
+  <li *ngFor="let course of courses">
+    {{ course.title }}
+    <button (click)="selectCourse(course)">View Details</button>
+  </li>
+</ul>
+
+<hr>
+
+<!-- PROPERTY BINDING -->
+<app-course-detail [course]="selectedCourse"></app-course-detail>

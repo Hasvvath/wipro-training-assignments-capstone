@@ -1,0 +1,19 @@
+<div *ngIf="course">
+  <h2>Course Detail</h2>
+
+  <p>ID: {{ course.id }}</p>
+
+  <!-- TWO WAY BINDING -->
+  <p>
+    Title:
+    <input [(ngModel)]="course.title">
+  </p>
+
+  <p>
+    Description: {{ course.description }}
+  </p>
+</div>
+
+<div *ngIf="!course">
+  <p>Select a course</p>
+</div>
