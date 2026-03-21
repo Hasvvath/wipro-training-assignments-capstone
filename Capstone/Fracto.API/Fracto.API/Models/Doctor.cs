@@ -12,6 +12,9 @@
 
         public string City { get; set; } = string.Empty;
 
+        public int Experience { get; set; }
+
+
         public string HospitalName { get; set; } = string.Empty;
 
         public string? ProfileImage { get; set; }

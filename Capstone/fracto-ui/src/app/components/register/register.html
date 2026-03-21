@@ -21,7 +21,16 @@
       <input type="password" name="password" [(ngModel)]="password" required minlength="6" placeholder="Create a password" />
     </label>
 
-    <button type="submit" [disabled]="isSubmitting() || registerForm.invalid">
+    <label>
+      <span>Confirm Password</span>
+      <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" required minlength="6" placeholder="Re-enter your password" />
+    </label>
+
+    @if (passwordsDoNotMatch()) {
+      <p class="status error">Password and confirm password must match.</p>
+    }
+
+    <button type="submit" [disabled]="isSubmitting() || registerForm.invalid || passwordsDoNotMatch()">
       {{ isSubmitting() ? 'Registering...' : 'Register' }}
     </button>
   </form>

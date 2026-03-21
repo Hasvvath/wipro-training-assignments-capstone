@@ -30,6 +30,7 @@ export class AdminComponent implements OnInit {
   city = '';
   hospitalName = '';
   rating = 0;
+  experience = 0;
   selectedImage: File | null = null;
   imageName = '';
   editingDoctorId: number | null = null;
@@ -188,6 +189,7 @@ export class AdminComponent implements OnInit {
       city: this.city,
       hospitalName: this.hospitalName,
       rating: this.rating || 0,
+      experience: this.experience || 0,
       image: this.selectedImage
     };
 
@@ -220,6 +222,7 @@ export class AdminComponent implements OnInit {
     this.city = doctor.city || '';
     this.hospitalName = doctor.hospitalName || '';
     this.rating = doctor.rating || 0;
+    this.experience = doctor.experience || 0;
     this.selectedImage = null;
     this.imageName = '';
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -381,6 +384,7 @@ export class AdminComponent implements OnInit {
     this.city = '';
     this.hospitalName = '';
     this.rating = 0;
+    this.experience = 0;
     this.selectedImage = null;
     this.imageName = '';
   }

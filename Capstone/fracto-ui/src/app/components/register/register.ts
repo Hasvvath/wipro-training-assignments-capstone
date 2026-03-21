@@ -17,14 +17,23 @@ export class RegisterComponent {
   name = '';
   email = '';
   password = '';
+  confirmPassword = '';
   message = signal('');
   isError = signal(false);
   isSubmitting = signal(false);
   messageClass = computed(() => (this.isError() ? 'status error' : 'status success'));
+  passwordsDoNotMatch = computed(() =>
+    this.confirmPassword.length > 0 && this.password !== this.confirmPassword
+  );
 
   onSubmit(): void {
-    if (!this.name || !this.email || !this.password) {
+    if (!this.name || !this.email || !this.password || !this.confirmPassword) {
       this.setMessage('Please complete all registration fields.', true);
+      return;
+    }
+
+    if (this.passwordsDoNotMatch()) {
+      this.setMessage('Password and confirm password must match.', true);
       return;
     }
 
@@ -40,6 +49,7 @@ export class RegisterComponent {
         this.name = '';
         this.email = '';
         this.password = '';
+        this.confirmPassword = '';
         setTimeout(() => this.router.navigate(['/login']), 1200);
       },
       error: (error) => {

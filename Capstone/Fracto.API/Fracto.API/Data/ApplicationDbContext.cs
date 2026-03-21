@@ -27,6 +27,10 @@ namespace Fracto.API.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+
+            modelBuilder.Entity<Doctor>()
+                .Property(d => d.Experience)
+                .HasDefaultValue(0);
         }
     }
 }

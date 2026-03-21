@@ -25,7 +25,8 @@ namespace Fracto.API.Controllers
 
             if (!string.IsNullOrWhiteSpace(city))
             {
-                query = query.Where(d => d.City.ToLower() == city.ToLower());
+                var normalizedCity = city.Trim().ToLower();
+                query = query.Where(d => d.City.ToLower() == normalizedCity);
             }
 
             var doctors = query.Select(d => new
@@ -36,12 +37,12 @@ namespace Fracto.API.Controllers
                 rating = d.Rating,
                 city = d.City,
                 hospitalName = d.HospitalName,
+                experience = d.Experience,
                 profileImage = d.ProfileImage
             }).ToList();
 
             return Ok(doctors);
         }
-
 
         [HttpGet("{id}")]
         public IActionResult GetDoctorById(int id)
@@ -56,6 +57,7 @@ namespace Fracto.API.Controllers
                     rating = d.Rating,
                     city = d.City,
                     hospitalName = d.HospitalName,
+                    experience = d.Experience,
                     profileImage = d.ProfileImage
                 })
                 .FirstOrDefault();
@@ -77,15 +79,21 @@ namespace Fracto.API.Controllers
                 return BadRequest("Name, specialization, city and hospital name are required");
             }
 
+            if (dto.Experience < 0)
+            {
+                return BadRequest("Experience cannot be negative");
+            }
+
             string? imagePath = SaveImage(dto.Image);
 
             var doctor = new Doctor
             {
-                Name = dto.Name,
-                Specialization = dto.Specialization,
+                Name = dto.Name.Trim(),
+                Specialization = dto.Specialization.Trim(),
                 Rating = dto.Rating,
-                City = dto.City,
-                HospitalName = dto.HospitalName,
+                City = dto.City.Trim(),
+                HospitalName = dto.HospitalName.Trim(),
+                Experience = dto.Experience,
                 ProfileImage = imagePath
             };
 
@@ -107,11 +115,17 @@ namespace Fracto.API.Controllers
             if (doctor == null)
                 return NotFound("Doctor not found");
 
-            doctor.Name = dto.Name;
-            doctor.Specialization = dto.Specialization;
+            if (dto.Experience < 0)
+            {
+                return BadRequest("Experience cannot be negative");
+            }
+
+            doctor.Name = dto.Name.Trim();
+            doctor.Specialization = dto.Specialization.Trim();
             doctor.Rating = dto.Rating;
-            doctor.City = dto.City;
-            doctor.HospitalName = dto.HospitalName;
+            doctor.City = dto.City.Trim();
+            doctor.HospitalName = dto.HospitalName.Trim();
+            doctor.Experience = dto.Experience;
 
             if (dto.Image != null)
             {

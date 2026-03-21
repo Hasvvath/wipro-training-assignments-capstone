@@ -60,6 +60,7 @@
           <p><strong>City:</strong> {{ doctor.city || 'Not provided' }}</p>
           <p><strong>Specialization:</strong> {{ specialization(doctor) }}</p>
           <p><strong>Rating:</strong> {{ doctor.rating ?? 'Not rated yet' }}</p>
+          <p><strong>Experience:</strong> {{ doctor.experience ?? 0 }} years</p>
         </div>
 
         <button type="button" (click)="bookAppointment(doctor.id)">Book Appointment</button>

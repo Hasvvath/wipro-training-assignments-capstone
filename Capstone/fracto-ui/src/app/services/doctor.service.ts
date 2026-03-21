@@ -15,6 +15,7 @@ export interface Doctor {
   rating?: number;
   city?: string;
   hospitalName?: string;
+  experience?: number;
   profileImage?: string | null;
 }
 
@@ -24,6 +25,7 @@ export interface CreateDoctorPayload {
   rating: number;
   city: string;
   hospitalName: string;
+  experience: number;
   image?: File | null;
 }
 
@@ -65,6 +67,7 @@ export class DoctorService {
     formData.append('Rating', String(payload.rating));
     formData.append('City', payload.city);
     formData.append('HospitalName', payload.hospitalName);
+    formData.append('Experience', String(payload.experience));
 
     if (payload.image) {
       formData.append('Image', payload.image);

@@ -103,6 +103,11 @@
           </label>
 
           <label>
+            <span>Experience (Years)</span>
+            <input type="number" name="experience" [(ngModel)]="experience" min="0" max="60" step="1" placeholder="Enter years of experience" />
+          </label>
+
+          <label>
             <span>Profile Picture</span>
             <input type="file" name="image" accept="image/*" (change)="onImageSelected($event)" />
             @if (imageName) {
@@ -152,6 +157,7 @@
                 <p>{{ doctor.specialization }}</p>
                 <p>{{ doctor.hospitalName || 'Hospital not set' }}</p>
                 <p>{{ doctor.city || 'City not set' }}</p>
+                <p>{{ doctor.experience ?? 0 }} years experience</p>
               </div>
             </div>
             <div class="row-actions">

@@ -281,6 +281,10 @@
                   "City": {
                     "type": "string"
                   },
+                  "Experience": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
                   "HospitalName": {
                     "type": "string"
                   },
@@ -301,6 +305,9 @@
                   "style": "form"
                 },
                 "City": {
+                  "style": "form"
+                },
+                "Experience": {
                   "style": "form"
                 },
                 "HospitalName": {
@@ -376,6 +383,10 @@
                   "City": {
                     "type": "string"
                   },
+                  "Experience": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
                   "HospitalName": {
                     "type": "string"
                   },
@@ -396,6 +407,9 @@
                   "style": "form"
                 },
                 "City": {
+                  "style": "form"
+                },
+                "Experience": {
                   "style": "form"
                 },
                 "HospitalName": {
