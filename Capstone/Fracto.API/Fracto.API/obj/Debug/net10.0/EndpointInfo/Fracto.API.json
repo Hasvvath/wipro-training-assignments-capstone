@@ -459,17 +459,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Rating"
+                "$ref": "#/components/schemas/AddRatingDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Rating"
+                "$ref": "#/components/schemas/AddRatingDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Rating"
+                "$ref": "#/components/schemas/AddRatingDto"
               }
             }
           }
@@ -610,6 +610,28 @@
   },
   "components": {
     "schemas": {
+      "AddRatingDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "doctorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "appointmentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rating": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "Appointment": {
         "type": "object",
         "properties": {
@@ -672,28 +694,6 @@
           "password": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Rating": {
-        "type": "object",
-        "properties": {
-          "ratingId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "doctorId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "ratingValue": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

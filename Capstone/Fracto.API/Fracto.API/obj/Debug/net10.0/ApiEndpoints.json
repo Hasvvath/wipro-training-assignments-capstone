@@ -285,8 +285,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "rating",
-        "Type": "Fracto.API.Models.Rating",
+        "Name": "dto",
+        "Type": "Fracto.API.DTOs.AddRatingDto",
         "IsRequired": true
       }
     ],

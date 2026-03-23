@@ -3,7 +3,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Appointment, AppointmentService } from '../../services/appointment.service';
-import { getEffectiveAppointmentStatus, getRawAppointmentStatus } from '../../services/appointment-status';
+import { getAppointmentDateTime, getEffectiveAppointmentStatus, getRawAppointmentStatus } from '../../services/appointment-status';
 import { AuthService } from '../../services/auth.service';
 import { AppUser, UserService } from '../../services/user.service';
 import { CreateDoctorPayload, Doctor, DoctorService } from '../../services/doctor.service';
@@ -60,6 +60,12 @@ export class AdminComponent implements OnInit {
     const today = this.formatDateKey(new Date());
     return this.appointments().filter((appointment) => this.formatDateKey(this.appointmentDate(appointment)) === today).length;
   });
+  readonly upcomingAppointments = computed(() =>
+    this.appointments().filter((appointment) => this.isUpcomingAppointment(appointment))
+  );
+  readonly attendanceAppointments = computed(() =>
+    this.appointments().filter((appointment) => !this.isUpcomingAppointment(appointment))
+  );
   readonly submitLabel = computed(() => {
     if (this.isSubmitting()) {
       return this.editingDoctorId ? 'Updating...' : 'Saving...';
@@ -366,13 +372,26 @@ export class AdminComponent implements OnInit {
   }
 
   canMarkAbsent(appointment: Appointment): boolean {
+    if (this.isUpcomingAppointment(appointment)) {
+      return false;
+    }
+
     const status = getRawAppointmentStatus(appointment).toLowerCase();
     return status === 'booked' || status === 'present';
   }
 
   canMarkPresent(appointment: Appointment): boolean {
+    if (this.isUpcomingAppointment(appointment)) {
+      return false;
+    }
+
     const status = getRawAppointmentStatus(appointment).toLowerCase();
     return status === 'booked' || status === 'absent';
+  }
+
+  isUpcomingAppointment(appointment: Appointment): boolean {
+    const scheduledAt = getAppointmentDateTime(appointment);
+    return scheduledAt ? scheduledAt.getTime() > Date.now() : false;
   }
 
   logout(): void {

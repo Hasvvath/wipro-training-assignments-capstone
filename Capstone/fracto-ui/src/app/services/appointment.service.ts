@@ -23,6 +23,13 @@ export interface Appointment {
   status?: string;
 }
 
+export interface DoctorRatingPayload {
+  userId: number;
+  doctorId: number;
+  appointmentId: number;
+  rating: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -52,5 +59,17 @@ export class AppointmentService {
 
   deleteAppointment(id: number): Observable<unknown> {
     return this.api.delete(`/Appointment/${id}`);
+  }
+
+  submitDoctorRating(payload: DoctorRatingPayload): Observable<unknown> {
+    const requestBody = {
+      userId: payload.userId,
+      doctorId: payload.doctorId,
+      appointmentId: payload.appointmentId,
+      rating: payload.rating,
+      score: payload.rating
+    };
+
+    return this.api.post('/Rating', requestBody);
   }
 }

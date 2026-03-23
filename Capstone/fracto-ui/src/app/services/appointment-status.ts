@@ -41,7 +41,17 @@ function parseAppointmentDate(date?: string): Date | null {
   }
 
   const dateOnly = date.includes('T') ? date.split('T')[0] : date;
-  const [year, month, day] = dateOnly.split('-').map(Number);
+  const chunks = dateOnly.split('-').map(Number);
+
+  let year = 0;
+  let month = 0;
+  let day = 0;
+
+  if (chunks.length === 3 && chunks[0] > 999) {
+    [year, month, day] = chunks;
+  } else if (chunks.length === 3) {
+    [day, month, year] = chunks;
+  }
 
   if (!year || !month || !day) {
     return null;
@@ -79,10 +89,19 @@ export function isAppointmentPast(appointment: Appointment): boolean {
 }
 
 export function getEffectiveAppointmentStatus(appointment: Appointment): string {
-  const explicitStatus = getRawAppointmentStatus(appointment);
-  if (explicitStatus.toLowerCase() !== 'booked') {
-    return explicitStatus;
+  const explicitStatus = getRawAppointmentStatus(appointment).toLowerCase();
+
+  if (explicitStatus === 'present') {
+    return 'Attended';
   }
 
-  return isAppointmentPast(appointment) ? 'Attended' : explicitStatus;
+  if (explicitStatus === 'absent') {
+    return 'Absent';
+  }
+
+  if (explicitStatus !== 'booked') {
+    return getRawAppointmentStatus(appointment);
+  }
+
+  return isAppointmentPast(appointment) ? 'Waiting' : 'Booked';
 }

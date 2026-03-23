@@ -67,6 +67,49 @@
   margin-top: 1rem;
 }
 
+.rating-row {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.rating-row label {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.rating-row select {
+  min-width: 180px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.5rem 0.65rem;
+  background: #fff;
+  color: var(--text);
+}
+
+.rate-btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 0.55rem 0.95rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rate-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.rating-note {
+  margin-top: 0.8rem;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
 .cancel-btn {
   border: 0;
   border-radius: 12px;

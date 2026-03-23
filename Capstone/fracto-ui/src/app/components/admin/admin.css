@@ -243,6 +243,22 @@ button:disabled {
   overflow-x: auto;
 }
 
+.section-gap {
+  margin-bottom: 1.1rem;
+}
+
+.subsection-title {
+  margin: 1rem 0 0.6rem;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.empty-row {
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;

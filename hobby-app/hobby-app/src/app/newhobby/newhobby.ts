@@ -1,4 +1,11 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Output,
+  EventEmitter,
+  ViewChild
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -7,10 +14,15 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
   templateUrl: './newhobby.html'
 })
-export class NewHobbyComponent {
+export class NewHobbyComponent implements AfterViewInit {
   newHobby: string = '';
+  @ViewChild('newHobbyInput') inputRef?: ElementRef<HTMLInputElement>;
 
   @Output() addHobby = new EventEmitter<string>();
+
+  ngAfterViewInit() {
+    this.inputRef?.nativeElement.focus();
+  }
 
   add() {
     if (this.newHobby.trim()) {

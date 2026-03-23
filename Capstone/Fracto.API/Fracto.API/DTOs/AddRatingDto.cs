@@ -1,12 +1,11 @@
-﻿namespace Fracto.API.Models
+﻿namespace Fracto.API.DTOs
 {
-    public class Rating
+    public class AddRatingDto
     {
-        public int RatingId { get; set; }
         public int UserId { get; set; }
         public int DoctorId { get; set; }
         public int AppointmentId { get; set; }
-        public int Score { get; set; }
-
+        public int Rating { get; set; }
     }
+
 }

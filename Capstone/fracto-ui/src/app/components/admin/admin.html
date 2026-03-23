@@ -229,7 +229,7 @@
       <div class="panel-head">
         <div>
           <p class="section-label">Booking Overview</p>
-          <h3>Users And Appointments</h3>
+          <h3>Appointments Management</h3>
         </div>
         <div class="meta-row">
           @if (isLoadingAppointments()) {
@@ -238,6 +238,44 @@
         </div>
       </div>
 
+      <h4 class="subsection-title">Upcoming Appointments</h4>
+      <div class="table-wrap section-gap">
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Doctor</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (appointment of upcomingAppointments(); track appointment.appointmentId || appointment.id || $index) {
+              <tr>
+                <td>{{ userLabel(appointment.userId) }}</td>
+                <td>{{ doctorLabel(appointment) }}</td>
+                <td>{{ appointmentDate(appointment) | date:'mediumDate' }}</td>
+                <td>{{ appointment.timeSlot || '-' }}</td>
+                <td>{{ effectiveStatus(appointment) }}</td>
+                <td>
+                  <div class="row-actions compact-actions">
+                    <button type="button" class="danger-btn" (click)="deleteAppointment(appointment)">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            }
+            @if (!upcomingAppointments().length) {
+              <tr>
+                <td colspan="6" class="empty-row">No upcoming appointments.</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="subsection-title">Past / Attendance Appointments</h4>
       <div class="table-wrap">
         <table>
           <thead>
@@ -251,7 +289,7 @@
             </tr>
           </thead>
           <tbody>
-            @for (appointment of appointments(); track appointment.appointmentId || appointment.id || $index) {
+            @for (appointment of attendanceAppointments(); track appointment.appointmentId || appointment.id || $index) {
               <tr>
                 <td>{{ userLabel(appointment.userId) }}</td>
                 <td>{{ doctorLabel(appointment) }}</td>
@@ -269,6 +307,11 @@
                     <button type="button" class="danger-btn" (click)="deleteAppointment(appointment)">Delete</button>
                   </div>
                 </td>
+              </tr>
+            }
+            @if (!attendanceAppointments().length) {
+              <tr>
+                <td colspan="6" class="empty-row">No past appointments yet.</td>
               </tr>
             }
           </tbody>
