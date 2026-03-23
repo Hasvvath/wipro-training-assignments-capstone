@@ -13,6 +13,10 @@
     <p class="status info">Loading booked slot data...</p>
   }
 
+  @if (isLoadingLeaves()) {
+    <p class="status info">Loading doctor leave calendar...</p>
+  }
+
   <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
     <label>
       <span>City</span>
@@ -59,11 +63,15 @@
       </select>
     </label>
 
+    @if (doctorId && date && isDoctorOnSelectedDateLeave()) {
+      <p class="status error">Doctor is on leave for this date. Slots are closed.</p>
+    }
+
     @if (date && timeSlot && !isLoadingAppointments() && !isLoadingDoctors() && !isCityDoctorMismatch() && !slotAvailability().some(slot => slot.value === timeSlot)) {
       <p class="status error">This time slot has already passed for the selected date.</p>
     }
 
-    @if (date && doctorId && !slotAvailability().length) {
+    @if (date && doctorId && !slotAvailability().length && !isDoctorOnSelectedDateLeave()) {
       <p class="status error">All slots are full for this doctor on the selected date.</p>
     }
 

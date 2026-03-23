@@ -450,6 +450,101 @@
         }
       }
     },
+    "/api/DoctorLeave": {
+      "get": {
+        "tags": [
+          "DoctorLeave"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DoctorLeave"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDoctorLeaveDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDoctorLeaveDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateDoctorLeaveDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/DoctorLeave/{id}": {
+      "delete": {
+        "tags": [
+          "DoctorLeave"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Rating/add": {
+      "post": {
+        "tags": [
+          "Rating"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddRatingDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddRatingDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddRatingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Rating": {
       "post": {
         "tags": [
@@ -658,6 +753,10 @@
           "status": {
             "type": "string",
             "nullable": true
+          },
+          "cancellationReason": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -678,6 +777,31 @@
             "format": "date-time"
           },
           "timeSlot": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateDoctorLeaveDto": {
+        "type": "object",
+        "properties": {
+          "doctorId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "leaveDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isFullDay": {
+            "type": "boolean"
+          },
+          "timeSlot": {
+            "type": "string",
+            "nullable": true
+          },
+          "reason": {
             "type": "string",
             "nullable": true
           }
@@ -801,6 +925,9 @@
     },
     {
       "name": "Doctor"
+    },
+    {
+      "name": "DoctorLeave"
     },
     {
       "name": "Rating"

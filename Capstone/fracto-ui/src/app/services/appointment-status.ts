@@ -40,6 +40,11 @@ function parseAppointmentDate(date?: string): Date | null {
     return null;
   }
 
+  const directParsed = new Date(date);
+  if (!Number.isNaN(directParsed.getTime())) {
+    return new Date(directParsed.getFullYear(), directParsed.getMonth(), directParsed.getDate());
+  }
+
   const dateOnly = date.includes('T') ? date.split('T')[0] : date;
   const chunks = dateOnly.split('-').map(Number);
 

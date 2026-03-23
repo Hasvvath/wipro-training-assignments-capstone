@@ -13,5 +13,8 @@
         public string TimeSlot { get; set; }
 
         public string Status { get; set; }
+
+        public string? CancellationReason { get; set; }
+
     }
 }

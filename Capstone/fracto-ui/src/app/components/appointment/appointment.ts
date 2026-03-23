@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Appointment, AppointmentService } from '../../services/appointment.service';
 import { AuthService } from '../../services/auth.service';
 import { Doctor, DoctorService } from '../../services/doctor.service';
+import { DoctorLeave, DoctorLeaveService } from '../../services/doctor-leave.service';
 
 interface SlotOption {
   label: string;
@@ -22,6 +23,7 @@ interface SlotOption {
 export class AppointmentComponent implements OnInit {
   private readonly appointmentService = inject(AppointmentService);
   private readonly doctorService = inject(DoctorService);
+  private readonly doctorLeaveService = inject(DoctorLeaveService);
   private readonly route = inject(ActivatedRoute);
   private readonly authService = inject(AuthService);
 
@@ -34,6 +36,7 @@ export class AppointmentComponent implements OnInit {
   isError = signal(false);
   isLoadingDoctors = signal(true);
   isLoadingAppointments = signal(true);
+  isLoadingLeaves = signal(true);
   isSubmitting = signal(false);
   messageClass = computed(() => (this.isError() ? 'status error' : 'status success'));
   readonly minDate = this.formatLocalDate(new Date());
@@ -45,6 +48,7 @@ export class AppointmentComponent implements OnInit {
     { label: '07:00 PM', value: '19:00', capacity: 20 }
   ];
   readonly appointments = signal<Appointment[]>([]);
+  readonly doctorLeaves = signal<DoctorLeave[]>([]);
   readonly cities = computed(() =>
     [...new Set(this.allDoctors().map((doctor) => doctor.city).filter((city): city is string => !!city))].sort()
   );
@@ -56,6 +60,7 @@ export class AppointmentComponent implements OnInit {
     });
     this.loadDoctors();
     this.loadAppointments();
+    this.loadLeaves();
   }
 
   loadDoctors(): void {
@@ -92,6 +97,19 @@ export class AppointmentComponent implements OnInit {
     });
   }
 
+  loadLeaves(): void {
+    this.isLoadingLeaves.set(true);
+    this.doctorLeaveService.getLeaves().subscribe({
+      next: (leaves) => {
+        this.doctorLeaves.set(leaves ?? []);
+        this.isLoadingLeaves.set(false);
+      },
+      error: () => {
+        this.isLoadingLeaves.set(false);
+      }
+    });
+  }
+
   onSubmit(): void {
     if (!this.doctorId || !this.date || !this.timeSlot) {
       this.setMessage('Please choose a doctor, date, and time slot.', true);
@@ -112,6 +130,16 @@ export class AppointmentComponent implements OnInit {
     const selectedSlot = this.slotAvailability().find((slot) => slot.value === this.timeSlot);
     if (!selectedSlot) {
       this.setMessage('This slot is no longer available.', true);
+      return;
+    }
+
+    if (this.isDoctorOnFullDayLeave(Number(this.doctorId), this.date)) {
+      this.setMessage('Doctor is unavailable on this date due to leave/holiday.', true);
+      return;
+    }
+
+    if (this.isDoctorOnSlotLeave(Number(this.doctorId), this.date, this.timeSlot)) {
+      this.setMessage('Doctor is unavailable for this time slot due to leave/holiday.', true);
       return;
     }
 
@@ -209,6 +237,8 @@ export class AppointmentComponent implements OnInit {
       }));
     }
 
+    const fullDayLeave = this.isDoctorOnFullDayLeave(selectedDoctorId, selectedDate);
+
     return this.slotOptions
       .map((slot) => {
         const bookedCount = this.appointments().filter((appointment) =>
@@ -218,15 +248,51 @@ export class AppointmentComponent implements OnInit {
         ).length;
 
         const isPastToday = this.isPastSlotForSelectedDate(slot.value, selectedDate);
+        const isOnSlotLeave = this.isDoctorOnSlotLeave(selectedDoctorId, selectedDate, slot.value);
 
         return {
           ...slot,
           bookedCount,
           remaining: Math.max(slot.capacity - bookedCount, 0),
-          isFull: bookedCount >= slot.capacity || isPastToday
+          isFull: fullDayLeave || bookedCount >= slot.capacity || isPastToday || isOnSlotLeave
         };
       })
       .filter((slot) => !slot.isFull);
+  }
+
+  isDoctorOnSelectedDateLeave(): boolean {
+    const selectedDoctorId = Number(this.doctorId);
+    return !!selectedDoctorId && !!this.date && this.isDoctorOnFullDayLeave(selectedDoctorId, this.date);
+  }
+
+  private isDoctorOnFullDayLeave(doctorId: number, date: string): boolean {
+    if (!doctorId || !date) {
+      return false;
+    }
+
+    const normalizedDate = this.normalizeDate(date);
+
+    return this.doctorLeaves().some((leave) =>
+      leave.doctorId === doctorId &&
+      this.normalizeDate(leave.leaveDate) === normalizedDate &&
+      leave.isFullDay
+    );
+  }
+
+  private isDoctorOnSlotLeave(doctorId: number, date: string, timeSlot: string): boolean {
+    if (!doctorId || !date || !timeSlot) {
+      return false;
+    }
+
+    const normalizedDate = this.normalizeDate(date);
+    const normalizedSlot = timeSlot.trim();
+
+    return this.doctorLeaves().some((leave) =>
+      leave.doctorId === doctorId &&
+      this.normalizeDate(leave.leaveDate) === normalizedDate &&
+      !leave.isFullDay &&
+      (leave.timeSlot ?? '').trim() === normalizedSlot
+    );
   }
 
   onCityChange(city: string): void {

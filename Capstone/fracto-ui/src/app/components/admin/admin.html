@@ -45,6 +45,7 @@
       <button type="button" [class.active-tab]="activeSection() === 'overview'" (click)="setSection('overview')">Overview</button>
       <button type="button" [class.active-tab]="activeSection() === 'doctor-setup'" (click)="setSection('doctor-setup')">Doctor Setup</button>
       <button type="button" [class.active-tab]="activeSection() === 'doctors'" (click)="setSection('doctors')">Doctors</button>
+      <button type="button" [class.active-tab]="activeSection() === 'availability'" (click)="setSection('availability')">Availability</button>
       <button type="button" [class.active-tab]="activeSection() === 'users'" (click)="setSection('users')">Users</button>
       <button type="button" [class.active-tab]="activeSection() === 'appointments'" (click)="setSection('appointments')">Appointments</button>
     </section>
@@ -181,6 +182,111 @@
         }
       </div>
       </section>
+    }
+
+    @if (activeSection() === 'availability') {
+      <div class="admin-grid">
+        <section class="page-card form-card">
+          <div class="panel-head">
+            <div>
+              <p class="section-label">Doctor Availability Calendar</p>
+              <h3>Add Leave / Holiday</h3>
+            </div>
+          </div>
+
+          <form (ngSubmit)="onSubmitDoctorLeave()" #leaveForm="ngForm">
+            <label>
+              <span>Doctor</span>
+              <select name="leaveDoctorId" [(ngModel)]="leaveDoctorId" required>
+                <option value="" disabled>Select a doctor</option>
+                @for (doctor of doctors(); track doctor.id) {
+                  <option [value]="doctor.id">{{ doctor.name }}{{ doctor.city ? ' - ' + doctor.city : '' }}</option>
+                }
+              </select>
+            </label>
+
+            <label>
+              <span>Leave Date</span>
+              <input type="date" name="leaveDate" [(ngModel)]="leaveDate" required />
+            </label>
+
+            <label>
+              <span>Leave Type</span>
+              <select name="leaveType" [(ngModel)]="leaveType" required>
+                <option value="full-day">Full Day</option>
+                <option value="slot">Particular Slot</option>
+              </select>
+            </label>
+
+            @if (leaveType === 'slot') {
+              <label>
+                <span>Leave Slot</span>
+                <select name="leaveSlot" [(ngModel)]="leaveSlot" required>
+                  <option value="" disabled>Select slot</option>
+                  @for (slot of leaveSlotOptions; track slot.value) {
+                    <option [value]="slot.value">{{ slot.label }}</option>
+                  }
+                </select>
+              </label>
+            }
+
+            <label>
+              <span>Reason (Optional)</span>
+              <input type="text" name="leaveReason" [(ngModel)]="leaveReason" placeholder="Vacation, emergency, holiday..." />
+            </label>
+
+            <button type="submit" [disabled]="isSubmitting() || leaveForm.invalid">
+              {{ isSubmitting() ? 'Saving...' : 'Save Leave' }}
+            </button>
+          </form>
+        </section>
+
+        <section class="page-card">
+          <div class="panel-head">
+            <div>
+              <p class="section-label">Leave Records</p>
+              <h3>Configured Leaves</h3>
+            </div>
+            @if (isLoadingLeaves()) {
+              <span class="chip">Loading...</span>
+            }
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Doctor</th>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Slot</th>
+                  <th>Reason</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (leave of doctorLeaves(); track leave.id) {
+                  <tr>
+                    <td>{{ leaveDoctorName(leave) }}</td>
+                    <td>{{ leave.leaveDate | date:'mediumDate' }}</td>
+                    <td>{{ leave.isFullDay ? 'Full Day' : 'Slot' }}</td>
+                    <td>{{ leave.timeSlot || '-' }}</td>
+                    <td>{{ leave.reason || '-' }}</td>
+                    <td>
+                      <button type="button" class="danger-btn compact-btn" (click)="deleteDoctorLeave(leave)">Delete</button>
+                    </td>
+                  </tr>
+                }
+                @if (!doctorLeaves().length) {
+                  <tr>
+                    <td colspan="6" class="empty-row">No leave entries yet.</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
     }
 
     @if (activeSection() === 'users') {

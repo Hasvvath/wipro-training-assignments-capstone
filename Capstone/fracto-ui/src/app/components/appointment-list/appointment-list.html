@@ -18,6 +18,9 @@
         <p><strong>Date:</strong> {{ appointmentDate(appointment) | date:'mediumDate' }}</p>
         <p><strong>Time:</strong> {{ appointment.timeSlot || '-' }}</p>
         <p><strong>Status:</strong> {{ effectiveStatus(appointment) }}</p>
+        @if (doctorUnavailableMessage(appointment)) {
+          <p class="doctor-unavailable-note">{{ doctorUnavailableMessage(appointment) }}</p>
+        }
         @if (canRate(appointment)) {
           <div class="rating-row">
             <label [for]="'rating-' + (appointment.appointmentId || appointment.id || $index)">Rate this doctor:</label>

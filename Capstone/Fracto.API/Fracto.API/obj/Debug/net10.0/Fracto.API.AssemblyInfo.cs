@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fracto.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e0fe58868ff130cbb9ae0eda4a3c26e11f5c95d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05f9f4cea41e3bae4ef5a7ff034dcfcd7b2f56d6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fracto.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fracto.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -11,14 +11,11 @@ namespace Fracto.API.Data
         }
 
         public DbSet<User> Users { get; set; }
-
         public DbSet<Doctor> Doctors { get; set; }
-
         public DbSet<Specialization> Specializations { get; set; }
-
         public DbSet<Appointment> Appointments { get; set; }
-
         public DbSet<Rating> Ratings { get; set; }
+        public DbSet<DoctorLeave> DoctorLeaves { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +28,9 @@ namespace Fracto.API.Data
             modelBuilder.Entity<Doctor>()
                 .Property(d => d.Experience)
                 .HasDefaultValue(0);
+
+            modelBuilder.Entity<DoctorLeave>()
+                .HasIndex(l => new { l.DoctorId, l.LeaveDate, l.IsFullDay, l.TimeSlot });
         }
     }
 }

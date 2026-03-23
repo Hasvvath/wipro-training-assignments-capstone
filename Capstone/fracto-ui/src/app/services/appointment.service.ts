@@ -21,6 +21,9 @@ export interface Appointment {
   date?: string;
   timeSlot?: string;
   status?: string;
+  reason?: string;
+  cancelReason?: string;
+  cancellationReason?: string;
 }
 
 export interface DoctorRatingPayload {

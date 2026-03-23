@@ -230,6 +230,11 @@ button:disabled {
   font-size: 0.9rem;
 }
 
+.compact-btn {
+  padding: 0.55rem 0.9rem;
+  font-size: 0.88rem;
+}
+
 .file-name {
   color: var(--muted);
 }

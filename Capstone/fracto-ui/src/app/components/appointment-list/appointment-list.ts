@@ -90,6 +90,23 @@ export class AppointmentListComponent implements OnInit {
     return getEffectiveAppointmentStatus(appointment);
   }
 
+  doctorUnavailableMessage(appointment: Appointment): string {
+    const raw = getRawAppointmentStatus(appointment).trim().toLowerCase();
+    const reason = this.readCancellationReason(appointment);
+
+    const unavailableStatus =
+      raw.includes('doctorunavailable') ||
+      raw.includes('doctor_unavailable') ||
+      raw.includes('doctor-unavailable') ||
+      (raw.includes('cancel') && reason.toLowerCase().includes('doctor'));
+
+    if (!unavailableStatus) {
+      return '';
+    }
+
+    return reason || 'Your booking was cancelled due to doctor unavailability.';
+  }
+
   canCancel(appointment: Appointment): boolean {
     return getRawAppointmentStatus(appointment).toLowerCase() === 'booked' &&
       (getAppointmentDateTime(appointment)?.getTime() ?? 0) > Date.now();
@@ -227,6 +244,11 @@ export class AppointmentListComponent implements OnInit {
   private readExistingRating(appointment: Appointment): number {
     const withRating = appointment as Appointment & { rating?: number; userRating?: number };
     return Number(withRating.userRating ?? withRating.rating ?? 0);
+  }
+
+  private readCancellationReason(appointment: Appointment): string {
+    const withReason = appointment as Appointment & { reason?: string; cancelReason?: string; cancellationReason?: string };
+    return (withReason.cancellationReason || withReason.cancelReason || withReason.reason || '').trim();
   }
 
   private getDoctorId(appointment: Appointment): number | null {

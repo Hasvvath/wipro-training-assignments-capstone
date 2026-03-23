@@ -63,6 +63,15 @@
   color: var(--muted);
 }
 
+.doctor-unavailable-note {
+  margin-top: 0.7rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  background: #fff1f1;
+  color: #b42318;
+  font-weight: 600;
+}
+
 .actions-row {
   margin-top: 1rem;
 }

@@ -7,6 +7,7 @@ import { getAppointmentDateTime, getEffectiveAppointmentStatus, getRawAppointmen
 import { AuthService } from '../../services/auth.service';
 import { AppUser, UserService } from '../../services/user.service';
 import { CreateDoctorPayload, Doctor, DoctorService } from '../../services/doctor.service';
+import { CreateDoctorLeavePayload, DoctorLeave, DoctorLeaveService } from '../../services/doctor-leave.service';
 
 @Component({
   selector: 'app-admin',
@@ -20,6 +21,7 @@ export class AdminComponent implements OnInit {
   private readonly doctorService = inject(DoctorService);
   private readonly appointmentService = inject(AppointmentService);
   private readonly userService = inject(UserService);
+  private readonly doctorLeaveService = inject(DoctorLeaveService);
   private readonly router = inject(Router);
 
   adminEmail = '';
@@ -34,10 +36,16 @@ export class AdminComponent implements OnInit {
   selectedImage: File | null = null;
   imageName = '';
   editingDoctorId: number | null = null;
+  leaveDoctorId = '';
+  leaveDate = '';
+  leaveType: 'full-day' | 'slot' = 'full-day';
+  leaveSlot = '';
+  leaveReason = '';
 
   doctors = signal<Doctor[]>([]);
   appointments = signal<Appointment[]>([]);
   users = signal<AppUser[]>([]);
+  doctorLeaves = signal<DoctorLeave[]>([]);
 
   message = signal('');
   isError = signal(false);
@@ -45,7 +53,8 @@ export class AdminComponent implements OnInit {
   isLoadingDoctors = signal(false);
   isLoadingUsers = signal(false);
   isLoadingAppointments = signal(false);
-  activeSection = signal<'overview' | 'doctor-setup' | 'doctors' | 'users' | 'appointments'>('overview');
+  isLoadingLeaves = signal(false);
+  activeSection = signal<'overview' | 'doctor-setup' | 'doctors' | 'availability' | 'users' | 'appointments'>('overview');
 
   readonly isAdmin = computed(() => this.authService.isAdmin());
   readonly currentUser = this.authService.currentUser;
@@ -81,6 +90,13 @@ export class AdminComponent implements OnInit {
     '07:00 PM - up to 20 patients',
     'Lunch break: 01:00 PM to 02:00 PM',
     'Doctors available until 09:00 PM'
+  ];
+  readonly leaveSlotOptions = [
+    { label: '09:00 AM', value: '09:00' },
+    { label: '10:30 AM', value: '10:30' },
+    { label: '02:00 PM', value: '14:00' },
+    { label: '04:30 PM', value: '16:30' },
+    { label: '07:00 PM', value: '19:00' }
   ];
 
   ngOnInit(): void {
@@ -128,9 +144,10 @@ export class AdminComponent implements OnInit {
     this.loadDoctors();
     this.loadUsers();
     this.loadAppointments();
+    this.loadLeaves();
   }
 
-  setSection(section: 'overview' | 'doctor-setup' | 'doctors' | 'users' | 'appointments'): void {
+  setSection(section: 'overview' | 'doctor-setup' | 'doctors' | 'availability' | 'users' | 'appointments'): void {
     this.activeSection.set(section);
   }
 
@@ -172,6 +189,20 @@ export class AdminComponent implements OnInit {
       error: (error) => {
         this.setMessage(this.errorMessage(error, 'Unable to load appointments.'), true);
         this.isLoadingAppointments.set(false);
+      }
+    });
+  }
+
+  loadLeaves(): void {
+    this.isLoadingLeaves.set(true);
+    this.doctorLeaveService.getLeaves().subscribe({
+      next: (leaves) => {
+        this.doctorLeaves.set(leaves ?? []);
+        this.isLoadingLeaves.set(false);
+      },
+      error: (error) => {
+        this.setMessage(this.errorMessage(error, 'Unable to load doctor leave calendar.'), true);
+        this.isLoadingLeaves.set(false);
       }
     });
   }
@@ -341,6 +372,66 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  onSubmitDoctorLeave(): void {
+    if (!this.leaveDoctorId || !this.leaveDate) {
+      this.setMessage('Doctor and leave date are required.', true);
+      return;
+    }
+
+    if (this.leaveType === 'slot' && !this.leaveSlot) {
+      this.setMessage('Choose a time slot for slot-based leave.', true);
+      return;
+    }
+
+    const payload: CreateDoctorLeavePayload = {
+      doctorId: Number(this.leaveDoctorId),
+      leaveDate: this.leaveDate,
+      isFullDay: this.leaveType === 'full-day',
+      timeSlot: this.leaveType === 'slot' ? this.leaveSlot : null,
+      reason: this.leaveReason?.trim() || undefined
+    };
+
+    this.isSubmitting.set(true);
+    this.doctorLeaveService.createLeave(payload).subscribe({
+      next: () => {
+        this.setMessage('Doctor leave saved. Affected booked appointments should be auto-cancelled by backend.', false);
+        this.isSubmitting.set(false);
+        this.leaveDoctorId = '';
+        this.leaveDate = '';
+        this.leaveType = 'full-day';
+        this.leaveSlot = '';
+        this.leaveReason = '';
+        this.loadLeaves();
+        this.loadAppointments();
+      },
+      error: (error) => {
+        this.setMessage(this.errorMessage(error, 'Unable to save doctor leave.'), true);
+        this.isSubmitting.set(false);
+      }
+    });
+  }
+
+  deleteDoctorLeave(leave: DoctorLeave): void {
+    if (!leave.id) {
+      return;
+    }
+
+    const confirmed = window.confirm('Delete this leave entry?');
+    if (!confirmed) {
+      return;
+    }
+
+    this.doctorLeaveService.deleteLeave(leave.id).subscribe({
+      next: () => {
+        this.setMessage('Doctor leave deleted.', false);
+        this.loadLeaves();
+      },
+      error: (error) => {
+        this.setMessage(this.errorMessage(error, 'Unable to delete leave entry.'), true);
+      }
+    });
+  }
+
   cancelEdit(): void {
     this.resetDoctorForm();
   }
@@ -367,6 +458,11 @@ export class AdminComponent implements OnInit {
     return appointment.appointmentDate || appointment.date || '';
   }
 
+  leaveDoctorName(leave: DoctorLeave): string {
+    const doctor = this.doctors().find((item) => item.id === leave.doctorId || item.doctorId === leave.doctorId);
+    return doctor?.name || `Doctor #${leave.doctorId}`;
+  }
+
   effectiveStatus(appointment: Appointment): string {
     return getEffectiveAppointmentStatus(appointment);
   }
@@ -391,7 +487,31 @@ export class AdminComponent implements OnInit {
 
   isUpcomingAppointment(appointment: Appointment): boolean {
     const scheduledAt = getAppointmentDateTime(appointment);
-    return scheduledAt ? scheduledAt.getTime() > Date.now() : false;
+    if (scheduledAt) {
+      return scheduledAt.getTime() > Date.now();
+    }
+
+    const rawDate = this.appointmentDate(appointment);
+    if (!rawDate) {
+      return false;
+    }
+
+    const parsedDate = new Date(rawDate);
+    if (Number.isNaN(parsedDate.getTime())) {
+      return false;
+    }
+
+    const endOfDay = new Date(
+      parsedDate.getFullYear(),
+      parsedDate.getMonth(),
+      parsedDate.getDate(),
+      23,
+      59,
+      59,
+      999
+    );
+
+    return endOfDay.getTime() > Date.now();
   }
 
   logout(): void {

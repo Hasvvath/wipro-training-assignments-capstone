@@ -277,6 +277,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Fracto.API.Controllers.DoctorLeaveController",
+    "Method": "GetLeaves",
+    "RelativePath": "api/DoctorLeave",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fracto.API.Controllers.DoctorLeaveController",
+    "Method": "AddLeave",
+    "RelativePath": "api/DoctorLeave",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Fracto.API.DTOs.CreateDoctorLeaveDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fracto.API.Controllers.DoctorLeaveController",
+    "Method": "DeleteLeave",
+    "RelativePath": "api/DoctorLeave/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fracto.API.Controllers.RatingController",
     "Method": "AddRating",
     "RelativePath": "api/Rating",
@@ -300,6 +342,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fracto.API.Controllers.RatingController",
+    "Method": "AddRating",
+    "RelativePath": "api/Rating/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Fracto.API.DTOs.AddRatingDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
