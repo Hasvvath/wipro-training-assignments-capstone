@@ -754,6 +754,14 @@
             "type": "string",
             "nullable": true
           },
+          "consultationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "meetingLink": {
+            "type": "string",
+            "nullable": true
+          },
           "cancellationReason": {
             "type": "string",
             "nullable": true
@@ -777,6 +785,14 @@
             "format": "date-time"
           },
           "timeSlot": {
+            "type": "string",
+            "nullable": true
+          },
+          "consultationType": {
+            "type": "string",
+            "nullable": true
+          },
+          "meetingLink": {
             "type": "string",
             "nullable": true
           }

@@ -10,6 +10,7 @@ import { AppUser, UserService } from '../../services/user.service';
 import { CreateDoctorPayload, Doctor, DoctorService } from '../../services/doctor.service';
 import { CreateDoctorLeavePayload, DoctorLeave, DoctorLeaveService } from '../../services/doctor-leave.service';
 import { VideoConsultationService } from '../../services/video-consultation.service';
+import { SignalrNotificationService } from '../../services/signalr-notification.service';
 
 @Component({
   selector: 'app-admin',
@@ -25,6 +26,7 @@ export class AdminComponent implements OnInit {
   private readonly userService = inject(UserService);
   private readonly doctorLeaveService = inject(DoctorLeaveService);
   private readonly videoConsultationService = inject(VideoConsultationService);
+  private readonly notificationService = inject(SignalrNotificationService);
   private readonly router = inject(Router);
 
   adminEmail = '';
@@ -295,6 +297,10 @@ export class AdminComponent implements OnInit {
           this.editingDoctorId ? 'Doctor updated successfully.' : 'Doctor added successfully.',
           false
         );
+        this.notificationService.pushNotification(
+          this.editingDoctorId ? 'Doctor updated successfully.' : 'Doctor added successfully.',
+          'success'
+        );
         this.isSubmitting.set(false);
         this.resetDoctorForm();
         this.loadDoctors();
@@ -332,6 +338,7 @@ export class AdminComponent implements OnInit {
     this.doctorService.deleteDoctor(doctor.id).subscribe({
       next: () => {
         this.setMessage('Doctor deleted successfully.', false);
+        this.notificationService.pushNotification('Doctor deleted successfully.', 'warning');
         if (this.editingDoctorId === doctor.id) {
           this.resetDoctorForm();
         }
@@ -357,6 +364,7 @@ export class AdminComponent implements OnInit {
     this.userService.deleteUser(userId).subscribe({
       next: () => {
         this.setMessage('User deleted successfully.', false);
+        this.notificationService.pushNotification('User deleted successfully.', 'warning');
         this.loadUsers();
       },
       error: (error) => {
@@ -387,6 +395,7 @@ export class AdminComponent implements OnInit {
     this.appointmentService.deleteAppointment(appointmentId).subscribe({
       next: () => {
         this.setMessage('Appointment deleted successfully.', false);
+        this.notificationService.pushNotification('Appointment deleted successfully.', 'warning');
         this.loadAppointments();
       },
       error: (error) => {
@@ -418,6 +427,7 @@ export class AdminComponent implements OnInit {
     this.doctorLeaveService.createLeave(payload).subscribe({
       next: () => {
         this.setMessage('Doctor leave saved. Affected booked appointments should be auto-cancelled by backend.', false);
+        this.notificationService.pushNotification('Doctor leave saved successfully.', 'success');
         this.isSubmitting.set(false);
         this.leaveDoctorId = '';
         this.leaveDate = '';
@@ -447,6 +457,7 @@ export class AdminComponent implements OnInit {
     this.doctorLeaveService.deleteLeave(leave.id).subscribe({
       next: () => {
         this.setMessage('Doctor leave deleted.', false);
+        this.notificationService.pushNotification('Doctor leave deleted.', 'warning');
         this.loadLeaves();
       },
       error: (error) => {
@@ -615,6 +626,7 @@ export class AdminComponent implements OnInit {
     this.appointmentService.updateAppointmentStatus(appointmentId, appointment, status).subscribe({
       next: () => {
         this.setMessage(successMessage, false);
+        this.notificationService.pushNotification(successMessage, 'success');
         this.loadAppointments();
       },
       error: (error) => {

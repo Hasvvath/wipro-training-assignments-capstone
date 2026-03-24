@@ -28,6 +28,18 @@
   </header>
 
   <main class="content-area">
+    <section class="notify-stack">
+      <div class="signalr-indicator" [class.connected]="signalrStatus() === 'connected'" [class.connecting]="signalrStatus() === 'connecting'">
+        Live Notifications: {{ signalrStatus() }}
+      </div>
+      @for (item of notifications(); track item.id) {
+        <article class="notify-card" [class.success]="item.type === 'success'" [class.warning]="item.type === 'warning'" [class.error]="item.type === 'error'">
+          <p>{{ item.message }}</p>
+          <button type="button" (click)="dismissNotification(item.id)">Dismiss</button>
+        </article>
+      }
+    </section>
+
     <router-outlet></router-outlet>
   </main>
 </div>

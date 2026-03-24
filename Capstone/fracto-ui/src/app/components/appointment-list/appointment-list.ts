@@ -6,6 +6,7 @@ import { getEffectiveAppointmentStatus, getRawAppointmentStatus, getAppointmentD
 import { AuthService } from '../../services/auth.service';
 import { Doctor, DoctorService } from '../../services/doctor.service';
 import { VideoConsultationService } from '../../services/video-consultation.service';
+import { SignalrNotificationService } from '../../services/signalr-notification.service';
 
 @Component({
   selector: 'app-appointment-list',
@@ -19,6 +20,7 @@ export class AppointmentListComponent implements OnInit {
   private readonly authService = inject(AuthService);
   private readonly doctorService = inject(DoctorService);
   private readonly videoConsultationService = inject(VideoConsultationService);
+  private readonly notificationService = inject(SignalrNotificationService);
 
   appointments = signal<Appointment[]>([]);
   message = signal('');
@@ -74,6 +76,7 @@ export class AppointmentListComponent implements OnInit {
     this.appointmentService.deleteAppointment(appointmentId).subscribe({
       next: () => {
         this.message.set('Appointment cancelled successfully.');
+        this.notificationService.pushNotification('Appointment cancelled successfully.', 'warning');
         this.loadAppointments();
       },
       error: () => {
@@ -247,6 +250,7 @@ export class AppointmentListComponent implements OnInit {
         this.ratingSubmitted.set(updatedSubmitted);
         localStorage.setItem('ratedAppointments', JSON.stringify(updatedSubmitted));
         this.message.set('Thanks. Your rating has been submitted.');
+        this.notificationService.pushNotification('Thanks. Your rating has been submitted.', 'success');
         window.dispatchEvent(new CustomEvent('doctor-rating-updated', { detail: { doctorId, rating } }));
 
         this.isSubmittingRating.set({

@@ -7,6 +7,7 @@ import { AuthService } from '../../services/auth.service';
 import { Doctor, DoctorService } from '../../services/doctor.service';
 import { DoctorLeave, DoctorLeaveService } from '../../services/doctor-leave.service';
 import { VideoConsultationService } from '../../services/video-consultation.service';
+import { SignalrNotificationService } from '../../services/signalr-notification.service';
 
 interface SlotOption {
   label: string;
@@ -28,6 +29,7 @@ export class AppointmentComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly authService = inject(AuthService);
   private readonly videoConsultationService = inject(VideoConsultationService);
+  private readonly notificationService = inject(SignalrNotificationService);
 
   allDoctors = signal<Doctor[]>([]);
   selectedCity = '';
@@ -218,8 +220,10 @@ export class AppointmentComponent implements OnInit {
           );
 
           this.setMessage('Online consultation booked. Meeting link has been generated and reminders are scheduled.', false);
+          this.notificationService.pushNotification('Online consultation booked successfully.', 'success');
         } else {
           this.setMessage('Appointment booked successfully.', false);
+          this.notificationService.pushNotification('Appointment booked successfully.', 'success');
         }
 
         this.isSubmitting.set(false);
