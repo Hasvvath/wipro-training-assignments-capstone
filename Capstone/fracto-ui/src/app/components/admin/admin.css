@@ -30,6 +30,20 @@
   gap: 1rem;
 }
 
+.analytics-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.analytics-tables {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.split-table-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
 .stat-card {
   background: linear-gradient(180deg, #ffffff 0%, #f5faff 100%);
   border: 1px solid var(--border);
@@ -318,7 +332,9 @@ th {
 
   .stats-grid,
   .admin-grid,
-  .users-grid {
+  .users-grid,
+  .analytics-tables,
+  .split-table-grid {
     grid-template-columns: 1fr;
   }
 

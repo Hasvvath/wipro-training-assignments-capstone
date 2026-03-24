@@ -43,6 +43,7 @@
 
     <section class="page-card section-tabs">
       <button type="button" [class.active-tab]="activeSection() === 'overview'" (click)="setSection('overview')">Overview</button>
+      <button type="button" [class.active-tab]="activeSection() === 'analytics'" (click)="setSection('analytics')">Analytics</button>
       <button type="button" [class.active-tab]="activeSection() === 'doctor-setup'" (click)="setSection('doctor-setup')">Doctor Setup</button>
       <button type="button" [class.active-tab]="activeSection() === 'doctors'" (click)="setSection('doctors')">Doctors</button>
       <button type="button" [class.active-tab]="activeSection() === 'availability'" (click)="setSection('availability')">Availability</button>
@@ -73,6 +74,148 @@
           <p>Appointments scheduled today</p>
         </article>
       </section>
+    }
+
+    @if (activeSection() === 'analytics') {
+      <section class="stats-grid analytics-grid">
+        <article class="stat-card">
+          <p class="stat-title">Most Booked Doctor</p>
+          <h3>{{ mostBookedDoctor()?.label || '-' }}</h3>
+          <p>{{ mostBookedDoctor()?.count || 0 }} bookings</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-title">Highest Rated Doctor</p>
+          <h3>{{ highestRatedDoctor()?.name || '-' }}</h3>
+          <p>{{ highestRatedDoctor()?.rating ?? '-' }} rating</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-title">Busiest Slot</p>
+          <h3>{{ busiestSlot()?.label || '-' }}</h3>
+          <p>{{ busiestSlot()?.count || 0 }} bookings</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-title">Top Booking City</p>
+          <h3>{{ topBookingCity()?.label || '-' }}</h3>
+          <p>{{ topBookingCity()?.count || 0 }} bookings</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-title">Most Booked Specialization</p>
+          <h3>{{ topSpecialization()?.label || '-' }}</h3>
+          <p>{{ topSpecialization()?.count || 0 }} bookings</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-title">Average Doctor Rating</p>
+          <h3>{{ averageDoctorRating() }}</h3>
+          <p>Across all doctors</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-title">Attendance Rate</p>
+          <h3>{{ attendanceRate() }}%</h3>
+          <p>Present or attended vs completed</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-title">Cancelled Appointments</p>
+          <h3>{{ cancellationCount() }}</h3>
+          <p>Total cancelled bookings</p>
+        </article>
+      </section>
+
+      <div class="admin-grid analytics-tables">
+        <section class="page-card">
+          <div class="panel-head">
+            <div>
+              <p class="section-label">Doctor Insights</p>
+              <h3>Top Doctors By Bookings</h3>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Doctor</th>
+                  <th>Bookings</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (doctor of topDoctors(); track doctor.label) {
+                  <tr>
+                    <td>{{ doctor.label }}</td>
+                    <td>{{ doctor.count }}</td>
+                  </tr>
+                }
+                @if (!topDoctors().length) {
+                  <tr>
+                    <td colspan="2" class="empty-row">No booking data available.</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="page-card">
+          <div class="panel-head">
+            <div>
+              <p class="section-label">Demand Insights</p>
+              <h3>Top Cities And Specializations</h3>
+            </div>
+          </div>
+          <div class="split-table-grid">
+            <div>
+              <h4 class="subsection-title">Cities</h4>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>City</th>
+                      <th>Bookings</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (city of topCities(); track city.label) {
+                      <tr>
+                        <td>{{ city.label }}</td>
+                        <td>{{ city.count }}</td>
+                      </tr>
+                    }
+                    @if (!topCities().length) {
+                      <tr>
+                        <td colspan="2" class="empty-row">No city data available.</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div>
+              <h4 class="subsection-title">Specializations</h4>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Specialization</th>
+                      <th>Bookings</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (specialization of topSpecializations(); track specialization.label) {
+                      <tr>
+                        <td>{{ specialization.label }}</td>
+                        <td>{{ specialization.count }}</td>
+                      </tr>
+                    }
+                    @if (!topSpecializations().length) {
+                      <tr>
+                        <td colspan="2" class="empty-row">No specialization data available.</td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     }
 
     @if (activeSection() === 'doctor-setup') {

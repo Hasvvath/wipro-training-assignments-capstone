@@ -54,7 +54,7 @@ export class AdminComponent implements OnInit {
   isLoadingUsers = signal(false);
   isLoadingAppointments = signal(false);
   isLoadingLeaves = signal(false);
-  activeSection = signal<'overview' | 'doctor-setup' | 'doctors' | 'availability' | 'users' | 'appointments'>('overview');
+  activeSection = signal<'overview' | 'analytics' | 'doctor-setup' | 'doctors' | 'availability' | 'users' | 'appointments'>('overview');
 
   readonly isAdmin = computed(() => this.authService.isAdmin());
   readonly currentUser = this.authService.currentUser;
@@ -68,6 +68,84 @@ export class AdminComponent implements OnInit {
   readonly todayAppointments = computed(() => {
     const today = this.formatDateKey(new Date());
     return this.appointments().filter((appointment) => this.formatDateKey(this.appointmentDate(appointment)) === today).length;
+  });
+  readonly analyticsAppointments = computed(() =>
+    this.appointments().filter((appointment) => this.getRawStatus(appointment) !== 'cancelled')
+  );
+  readonly mostBookedDoctor = computed(() => {
+    const counts = this.groupByLabel(this.analyticsAppointments(), (appointment) => this.doctorLabel(appointment));
+    return this.topLabelCount(counts);
+  });
+  readonly highestRatedDoctor = computed(() => {
+    const doctors = [...this.doctors()].filter((doctor) => typeof doctor.rating === 'number');
+    if (!doctors.length) {
+      return null;
+    }
+
+    doctors.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+    return doctors[0];
+  });
+  readonly busiestSlot = computed(() => {
+    const counts = this.groupByLabel(this.analyticsAppointments(), (appointment) => appointment.timeSlot || 'Unknown slot');
+    return this.topLabelCount(counts);
+  });
+  readonly topBookingCity = computed(() => {
+    const counts = this.groupByLabel(this.analyticsAppointments(), (appointment) => this.doctorCityLabel(appointment));
+    return this.topLabelCount(counts);
+  });
+  readonly topSpecialization = computed(() => {
+    const counts = this.groupByLabel(this.analyticsAppointments(), (appointment) => this.doctorSpecializationLabel(appointment));
+    return this.topLabelCount(counts);
+  });
+  readonly cancellationCount = computed(() =>
+    this.appointments().filter((appointment) => this.getRawStatus(appointment) === 'cancelled').length
+  );
+  readonly averageDoctorRating = computed(() => {
+    const doctorsWithRating = this.doctors().filter((doctor) => typeof doctor.rating === 'number');
+    if (!doctorsWithRating.length) {
+      return 0;
+    }
+
+    const total = doctorsWithRating.reduce((sum, doctor) => sum + Number(doctor.rating || 0), 0);
+    return Number((total / doctorsWithRating.length).toFixed(1));
+  });
+  readonly attendanceRate = computed(() => {
+    const completed = this.appointments().filter((appointment) => {
+      const status = this.getRawStatus(appointment);
+      return status === 'present' || status === 'attended' || status === 'absent';
+    });
+
+    if (!completed.length) {
+      return 0;
+    }
+
+    const attended = completed.filter((appointment) => {
+      const status = this.getRawStatus(appointment);
+      return status === 'present' || status === 'attended';
+    }).length;
+
+    return Math.round((attended / completed.length) * 100);
+  });
+  readonly topDoctors = computed(() => {
+    const counts = this.groupByLabel(this.analyticsAppointments(), (appointment) => this.doctorLabel(appointment));
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([label, count]) => ({ label, count }));
+  });
+  readonly topCities = computed(() => {
+    const counts = this.groupByLabel(this.analyticsAppointments(), (appointment) => this.doctorCityLabel(appointment));
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([label, count]) => ({ label, count }));
+  });
+  readonly topSpecializations = computed(() => {
+    const counts = this.groupByLabel(this.analyticsAppointments(), (appointment) => this.doctorSpecializationLabel(appointment));
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([label, count]) => ({ label, count }));
   });
   readonly upcomingAppointments = computed(() =>
     this.appointments().filter((appointment) => this.isUpcomingAppointment(appointment))
@@ -147,7 +225,7 @@ export class AdminComponent implements OnInit {
     this.loadLeaves();
   }
 
-  setSection(section: 'overview' | 'doctor-setup' | 'doctors' | 'availability' | 'users' | 'appointments'): void {
+  setSection(section: 'overview' | 'analytics' | 'doctor-setup' | 'doctors' | 'availability' | 'users' | 'appointments'): void {
     this.activeSection.set(section);
   }
 
@@ -454,6 +532,16 @@ export class AdminComponent implements OnInit {
     return doctor?.name || 'Doctor';
   }
 
+  doctorCityLabel(appointment: Appointment): string {
+    const doctor = this.findDoctorForAppointment(appointment);
+    return doctor?.city || 'Unknown city';
+  }
+
+  doctorSpecializationLabel(appointment: Appointment): string {
+    const doctor = this.findDoctorForAppointment(appointment);
+    return doctor?.specialization || doctor?.speciality || 'Unknown specialization';
+  }
+
   appointmentDate(appointment: Appointment): string {
     return appointment.appointmentDate || appointment.date || '';
   }
@@ -557,5 +645,40 @@ export class AdminComponent implements OnInit {
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
+  }
+
+  private getRawStatus(appointment: Appointment): string {
+    return getRawAppointmentStatus(appointment).toLowerCase();
+  }
+
+  private findDoctorForAppointment(appointment: Appointment): Doctor | undefined {
+    const doctorById = this.doctors().find((item) => item.id === appointment.doctorId || item.doctorId === appointment.doctorId);
+    if (doctorById) {
+      return doctorById;
+    }
+
+    const doctorName = (appointment.doctorName || appointment.doctor?.name || appointment.doctor?.doctorName || '').trim().toLowerCase();
+    if (!doctorName) {
+      return undefined;
+    }
+
+    return this.doctors().find((item) => (item.name || '').trim().toLowerCase() === doctorName);
+  }
+
+  private groupByLabel<T>(items: T[], labelSelector: (item: T) => string): Map<string, number> {
+    return items.reduce((map, item) => {
+      const label = labelSelector(item) || 'Unknown';
+      map.set(label, (map.get(label) || 0) + 1);
+      return map;
+    }, new Map<string, number>());
+  }
+
+  private topLabelCount(map: Map<string, number>): { label: string; count: number } | null {
+    if (!map.size) {
+      return null;
+    }
+
+    const entries = [...map.entries()].sort((a, b) => b[1] - a[1]);
+    return { label: entries[0][0], count: entries[0][1] };
   }
 }
