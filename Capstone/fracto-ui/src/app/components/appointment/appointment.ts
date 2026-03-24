@@ -6,6 +6,7 @@ import { Appointment, AppointmentService } from '../../services/appointment.serv
 import { AuthService } from '../../services/auth.service';
 import { Doctor, DoctorService } from '../../services/doctor.service';
 import { DoctorLeave, DoctorLeaveService } from '../../services/doctor-leave.service';
+import { VideoConsultationService } from '../../services/video-consultation.service';
 
 interface SlotOption {
   label: string;
@@ -26,12 +27,15 @@ export class AppointmentComponent implements OnInit {
   private readonly doctorLeaveService = inject(DoctorLeaveService);
   private readonly route = inject(ActivatedRoute);
   private readonly authService = inject(AuthService);
+  private readonly videoConsultationService = inject(VideoConsultationService);
 
   allDoctors = signal<Doctor[]>([]);
   selectedCity = '';
   doctorId = '';
   date = '';
   timeSlot = '';
+  consultationType: 'InPerson' | 'OnlineConsultation' = 'InPerson';
+  meetingLink = '';
   message = signal('');
   isError = signal(false);
   isLoadingDoctors = signal(true);
@@ -122,7 +126,8 @@ export class AppointmentComponent implements OnInit {
     }
 
     const currentUser = this.authService.getCurrentUser();
-    if (!currentUser?.id) {
+    const currentUserId = Number(currentUser?.id);
+    if (!currentUserId) {
       this.setMessage('Please login before booking an appointment.', true);
       return;
     }
@@ -149,7 +154,7 @@ export class AppointmentComponent implements OnInit {
     }
 
     const alreadyBookedByUser = this.appointments().some((appointment) =>
-      appointment.userId === currentUser.id &&
+      appointment.userId === currentUserId &&
       this.normalizeDate(appointment.appointmentDate || appointment.date) === this.date &&
       appointment.timeSlot === this.timeSlot
     );
@@ -166,6 +171,8 @@ export class AppointmentComponent implements OnInit {
       timeSlot: string;
       userId?: number;
       status: string;
+      consultationType?: 'InPerson' | 'OnlineConsultation';
+      meetingLink?: string;
     } = {
       doctorId: Number(this.doctorId),
       appointmentDate: this.date,
@@ -173,17 +180,56 @@ export class AppointmentComponent implements OnInit {
       status: 'Booked'
     };
 
-    payload.userId = currentUser.id;
+    payload.userId = currentUserId;
+    payload.consultationType = this.consultationType;
+
+    if (this.consultationType === 'OnlineConsultation') {
+      if (!this.meetingLink) {
+        this.meetingLink = this.videoConsultationService.generateMeetingLink(
+          Number(this.doctorId),
+          currentUserId,
+          this.date,
+          this.timeSlot
+        );
+      }
+      payload.meetingLink = this.meetingLink;
+    }
 
     this.appointmentService.createAppointment(payload).subscribe({
       next: () => {
-        this.setMessage('Appointment booked successfully.', false);
+        if (this.consultationType === 'OnlineConsultation') {
+          this.videoConsultationService.saveEmergencyConsultation({
+            userId: currentUserId,
+            doctorId: Number(this.doctorId),
+            appointmentDate: this.date,
+            timeSlot: this.timeSlot,
+            consultationType: 'OnlineConsultation',
+            meetingLink: this.meetingLink
+          });
+
+          this.videoConsultationService.scheduleAppointmentReminders(
+            {
+              userId: currentUserId,
+              doctorId: Number(this.doctorId),
+              appointmentDate: this.date,
+              timeSlot: this.timeSlot
+            },
+            this.meetingLink
+          );
+
+          this.setMessage('Online consultation booked. Meeting link has been generated and reminders are scheduled.', false);
+        } else {
+          this.setMessage('Appointment booked successfully.', false);
+        }
+
         this.isSubmitting.set(false);
         localStorage.removeItem('selectedDoctorId');
         localStorage.removeItem('selectedCity');
         this.doctorId = '';
         this.date = '';
         this.timeSlot = '';
+        this.consultationType = 'InPerson';
+        this.meetingLink = '';
         this.loadAppointments();
       },
       error: (error) => {
@@ -303,7 +349,41 @@ export class AppointmentComponent implements OnInit {
 
   onDoctorChange(): void {
     this.timeSlot = '';
+    if (this.consultationType === 'OnlineConsultation') {
+      this.refreshMeetingLink();
+    }
     this.message.set('');
+  }
+
+  onConsultationTypeChange(type: 'InPerson' | 'OnlineConsultation'): void {
+    this.consultationType = type;
+    if (type === 'OnlineConsultation') {
+      this.refreshMeetingLink();
+    } else {
+      this.meetingLink = '';
+    }
+  }
+
+  onDateOrTimeChange(): void {
+    if (this.consultationType === 'OnlineConsultation') {
+      this.refreshMeetingLink();
+    }
+  }
+
+  private refreshMeetingLink(): void {
+    const currentUser = this.authService.getCurrentUser();
+    const currentUserId = Number(currentUser?.id);
+    if (!currentUserId || !this.doctorId || !this.date || !this.timeSlot) {
+      this.meetingLink = '';
+      return;
+    }
+
+    this.meetingLink = this.videoConsultationService.generateMeetingLink(
+      Number(this.doctorId),
+      currentUserId,
+      this.date,
+      this.timeSlot
+    );
   }
 
   private normalizeDate(date?: string): string {

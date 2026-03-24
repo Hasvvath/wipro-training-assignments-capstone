@@ -2,12 +2,14 @@ import { Component, OnInit, computed, inject, signal } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Appointment, AppointmentService } from '../../services/appointment.service';
 import { getAppointmentDateTime, getEffectiveAppointmentStatus, getRawAppointmentStatus } from '../../services/appointment-status';
 import { AuthService } from '../../services/auth.service';
 import { AppUser, UserService } from '../../services/user.service';
 import { CreateDoctorPayload, Doctor, DoctorService } from '../../services/doctor.service';
 import { CreateDoctorLeavePayload, DoctorLeave, DoctorLeaveService } from '../../services/doctor-leave.service';
+import { VideoConsultationService } from '../../services/video-consultation.service';
 
 @Component({
   selector: 'app-admin',
@@ -22,6 +24,7 @@ export class AdminComponent implements OnInit {
   private readonly appointmentService = inject(AppointmentService);
   private readonly userService = inject(UserService);
   private readonly doctorLeaveService = inject(DoctorLeaveService);
+  private readonly videoConsultationService = inject(VideoConsultationService);
   private readonly router = inject(Router);
 
   adminEmail = '';
@@ -230,59 +233,27 @@ export class AdminComponent implements OnInit {
   }
 
   loadDoctors(): void {
-    this.isLoadingDoctors.set(true);
-    this.doctorService.getDoctors().subscribe({
-      next: (doctors) => {
-        this.doctors.set(doctors ?? []);
-        this.isLoadingDoctors.set(false);
-      },
-      error: (error) => {
-        this.setMessage(this.errorMessage(error, 'Unable to load doctors.'), true);
-        this.isLoadingDoctors.set(false);
-      }
-    });
+    this.withLoading(this.isLoadingDoctors, this.doctorService.getDoctors(), (doctors) => {
+      this.doctors.set(doctors ?? []);
+    }, 'Unable to load doctors.');
   }
 
   loadUsers(): void {
-    this.isLoadingUsers.set(true);
-    this.userService.getUsers().subscribe({
-      next: (users) => {
-        this.users.set(users ?? []);
-        this.isLoadingUsers.set(false);
-      },
-      error: (error) => {
-        this.setMessage(this.errorMessage(error, 'Unable to load users.'), true);
-        this.isLoadingUsers.set(false);
-      }
-    });
+    this.withLoading(this.isLoadingUsers, this.userService.getUsers(), (users) => {
+      this.users.set(users ?? []);
+    }, 'Unable to load users.');
   }
 
   loadAppointments(): void {
-    this.isLoadingAppointments.set(true);
-    this.appointmentService.getAppointments().subscribe({
-      next: (appointments) => {
-        this.appointments.set(appointments ?? []);
-        this.isLoadingAppointments.set(false);
-      },
-      error: (error) => {
-        this.setMessage(this.errorMessage(error, 'Unable to load appointments.'), true);
-        this.isLoadingAppointments.set(false);
-      }
-    });
+    this.withLoading(this.isLoadingAppointments, this.appointmentService.getAppointments(), (appointments) => {
+      this.appointments.set(appointments ?? []);
+    }, 'Unable to load appointments.');
   }
 
   loadLeaves(): void {
-    this.isLoadingLeaves.set(true);
-    this.doctorLeaveService.getLeaves().subscribe({
-      next: (leaves) => {
-        this.doctorLeaves.set(leaves ?? []);
-        this.isLoadingLeaves.set(false);
-      },
-      error: (error) => {
-        this.setMessage(this.errorMessage(error, 'Unable to load doctor leave calendar.'), true);
-        this.isLoadingLeaves.set(false);
-      }
-    });
+    this.withLoading(this.isLoadingLeaves, this.doctorLeaveService.getLeaves(), (leaves) => {
+      this.doctorLeaves.set(leaves ?? []);
+    }, 'Unable to load doctor leave calendar.');
   }
 
   onImageSelected(event: Event): void {
@@ -395,37 +366,11 @@ export class AdminComponent implements OnInit {
   }
 
   markPresent(appointment: Appointment): void {
-    const appointmentId = appointment.appointmentId ?? appointment.id;
-    if (!appointmentId) {
-      return;
-    }
-
-    this.appointmentService.updateAppointmentStatus(appointmentId, appointment, 'Present').subscribe({
-      next: () => {
-        this.setMessage('Appointment marked present.', false);
-        this.loadAppointments();
-      },
-      error: (error) => {
-        this.setMessage(this.errorMessage(error, 'Unable to update appointment status.'), true);
-      }
-    });
+    this.updateAppointmentStatus(appointment, 'Present', 'Appointment marked present.');
   }
 
   markAbsent(appointment: Appointment): void {
-    const appointmentId = appointment.appointmentId ?? appointment.id;
-    if (!appointmentId) {
-      return;
-    }
-
-    this.appointmentService.updateAppointmentStatus(appointmentId, appointment, 'Absent').subscribe({
-      next: () => {
-        this.setMessage('Appointment marked absent.', false);
-        this.loadAppointments();
-      },
-      error: (error) => {
-        this.setMessage(this.errorMessage(error, 'Unable to update appointment status.'), true);
-      }
-    });
+    this.updateAppointmentStatus(appointment, 'Absent', 'Appointment marked absent.');
   }
 
   deleteAppointment(appointment: Appointment): void {
@@ -546,6 +491,20 @@ export class AdminComponent implements OnInit {
     return appointment.appointmentDate || appointment.date || '';
   }
 
+  consultationTypeLabel(appointment: Appointment): string {
+    const type = (appointment.consultationType || '').trim().toLowerCase();
+    if (type === 'onlineconsultation' || type.includes('online') || type.includes('video')) {
+      return 'Online Consultation';
+    }
+
+    const localMeta = this.videoConsultationService.getEmergencyMetaForAppointment(appointment);
+    if (localMeta?.consultationType === 'OnlineConsultation' || !!localMeta?.meetingLink) {
+      return 'Online Consultation';
+    }
+
+    return 'In-person';
+  }
+
   leaveDoctorName(leave: DoctorLeave): string {
     const doctor = this.doctors().find((item) => item.id === leave.doctorId || item.doctorId === leave.doctorId);
     return doctor?.name || `Doctor #${leave.doctorId}`;
@@ -647,6 +606,23 @@ export class AdminComponent implements OnInit {
     return `${year}-${month}-${day}`;
   }
 
+  private updateAppointmentStatus(appointment: Appointment, status: string, successMessage: string): void {
+    const appointmentId = appointment.appointmentId ?? appointment.id;
+    if (!appointmentId) {
+      return;
+    }
+
+    this.appointmentService.updateAppointmentStatus(appointmentId, appointment, status).subscribe({
+      next: () => {
+        this.setMessage(successMessage, false);
+        this.loadAppointments();
+      },
+      error: (error) => {
+        this.setMessage(this.errorMessage(error, 'Unable to update appointment status.'), true);
+      }
+    });
+  }
+
   private getRawStatus(appointment: Appointment): string {
     return getRawAppointmentStatus(appointment).toLowerCase();
   }
@@ -680,5 +656,24 @@ export class AdminComponent implements OnInit {
 
     const entries = [...map.entries()].sort((a, b) => b[1] - a[1]);
     return { label: entries[0][0], count: entries[0][1] };
+  }
+
+  private withLoading<T>(
+    loadingSignal: { set: (value: boolean) => void },
+    request$: Observable<T>,
+    onSuccess: (result: T) => void,
+    fallbackError: string
+  ): void {
+    loadingSignal.set(true);
+    request$.subscribe({
+      next: (result) => {
+        onSuccess(result);
+        loadingSignal.set(false);
+      },
+      error: (error) => {
+        this.setMessage(this.errorMessage(error, fallbackError), true);
+        loadingSignal.set(false);
+      }
+    });
   }
 }

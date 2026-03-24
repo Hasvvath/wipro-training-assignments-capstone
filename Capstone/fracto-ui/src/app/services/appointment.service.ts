@@ -8,6 +8,8 @@ export interface AppointmentPayload {
   timeSlot: string;
   userId?: number;
   status?: string;
+  consultationType?: 'InPerson' | 'OnlineConsultation';
+  meetingLink?: string;
 }
 
 export interface Appointment {
@@ -24,6 +26,8 @@ export interface Appointment {
   reason?: string;
   cancelReason?: string;
   cancellationReason?: string;
+  consultationType?: string;
+  meetingLink?: string;
 }
 
 export interface DoctorRatingPayload {

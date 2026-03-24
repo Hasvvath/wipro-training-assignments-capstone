@@ -48,12 +48,12 @@
 
     <label>
       <span>Date</span>
-      <input type="date" name="date" [(ngModel)]="date" [min]="minDate" required />
+      <input type="date" name="date" [(ngModel)]="date" [min]="minDate" (ngModelChange)="onDateOrTimeChange()" required />
     </label>
 
     <label>
       <span>Time Slot</span>
-      <select name="timeSlot" [(ngModel)]="timeSlot" required>
+      <select name="timeSlot" [(ngModel)]="timeSlot" (ngModelChange)="onDateOrTimeChange()" required>
         <option value="" disabled>Select a time slot</option>
         @for (slot of slotAvailability(); track slot.value) {
           <option [value]="slot.value">
@@ -62,6 +62,30 @@
         }
       </select>
     </label>
+
+    <label>
+      <span>Consultation Type</span>
+      <select
+        name="consultationType"
+        [ngModel]="consultationType"
+        (ngModelChange)="onConsultationTypeChange($event)"
+      >
+        <option value="InPerson">In-person Visit</option>
+        <option value="OnlineConsultation">Online Consultation (Video Call)</option>
+      </select>
+    </label>
+
+    @if (consultationType === 'OnlineConsultation') {
+      <div class="video-box">
+        <p class="video-title">Online Consultation</p>
+        @if (meetingLink) {
+          <p class="video-text">Meeting link will be attached to your appointment:</p>
+          <a class="video-link" [href]="meetingLink" target="_blank" rel="noopener noreferrer">{{ meetingLink }}</a>
+        } @else {
+          <p class="video-text">Select doctor, date, and time to generate meeting link.</p>
+        }
+      </div>
+    }
 
     @if (doctorId && date && isDoctorOnSelectedDateLeave()) {
       <p class="status error">Doctor is on leave for this date. Slots are closed.</p>

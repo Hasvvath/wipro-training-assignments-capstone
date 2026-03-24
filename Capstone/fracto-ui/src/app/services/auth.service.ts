@@ -31,11 +31,21 @@ export interface AuthApiResponse {
 export class AuthService {
   private readonly api = inject(AxiosApiService);
   private readonly store = inject(Store);
+  private sessionTimerId: ReturnType<typeof setTimeout> | null = null;
   readonly currentUser = toSignal(this.store.select(selectAuthUser), { initialValue: this.readCurrentUser() });
   readonly isAuthenticated = toSignal(this.store.select(selectIsAuthenticated), { initialValue: !!this.readCurrentUser() });
 
   constructor() {
-    this.store.dispatch(authActions['setSession']({ user: this.readCurrentUser() }));
+    const user = this.readCurrentUser();
+    const token = this.getToken();
+
+    if (token && this.isTokenExpired(token)) {
+      this.clearSession();
+      return;
+    }
+
+    this.store.dispatch(authActions.setSession({ user }));
+    this.scheduleTokenExpiryLogout(token);
   }
 
   register(payload: { name: string; email: string; password: string }): Observable<unknown> {
@@ -54,14 +64,13 @@ export class AuthService {
         const isSuccess = response.success || !!token;
 
         if (!isSuccess) {
-          this.store.dispatch(authActions['clearSession']());
-          localStorage.removeItem('authToken');
-          localStorage.removeItem('currentUser');
+          this.clearSession();
           return;
         }
 
         if (token) {
           localStorage.setItem('authToken', token);
+          this.scheduleTokenExpiryLogout(token);
         }
 
         const user = response.user ?? {
@@ -79,7 +88,7 @@ export class AuthService {
         };
 
         localStorage.setItem('currentUser', JSON.stringify(resolvedUser));
-        this.store.dispatch(authActions['setSession']({ user: resolvedUser }));
+        this.store.dispatch(authActions.setSession({ user: resolvedUser }));
       })
     );
   }
@@ -116,14 +125,83 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('selectedDoctorId');
-    this.store.dispatch(authActions['clearSession']());
+    this.clearSession();
   }
 
   private readCurrentUser(): AuthUser | null {
     const savedUser = localStorage.getItem('currentUser');
-    return savedUser ? JSON.parse(savedUser) as AuthUser : null;
+    if (!savedUser) {
+      return null;
+    }
+
+    try {
+      return JSON.parse(savedUser) as AuthUser;
+    } catch {
+      localStorage.removeItem('currentUser');
+      return null;
+    }
+  }
+
+  private clearSession(): void {
+    if (this.sessionTimerId) {
+      clearTimeout(this.sessionTimerId);
+      this.sessionTimerId = null;
+    }
+
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('currentUser');
+    localStorage.removeItem('selectedDoctorId');
+    this.store.dispatch(authActions.clearSession());
+  }
+
+  private scheduleTokenExpiryLogout(token: string | null): void {
+    if (this.sessionTimerId) {
+      clearTimeout(this.sessionTimerId);
+      this.sessionTimerId = null;
+    }
+
+    if (!token) {
+      return;
+    }
+
+    const expiryTimeMs = this.getTokenExpiryTime(token);
+    if (!expiryTimeMs) {
+      return;
+    }
+
+    const delay = expiryTimeMs - Date.now();
+    if (delay <= 0) {
+      this.clearSession();
+      return;
+    }
+
+    this.sessionTimerId = setTimeout(() => {
+      this.clearSession();
+      window.location.href = '/login';
+    }, delay);
+  }
+
+  private getTokenExpiryTime(token: string): number | null {
+    try {
+      const payload = token.split('.')[1];
+      if (!payload) {
+        return null;
+      }
+
+      const normalizedPayload = payload.replace(/-/g, '+').replace(/_/g, '/');
+      const decoded = JSON.parse(atob(normalizedPayload));
+      if (!decoded?.exp) {
+        return null;
+      }
+
+      return Number(decoded.exp) * 1000;
+    } catch {
+      return null;
+    }
+  }
+
+  private isTokenExpired(token: string): boolean {
+    const expiryTimeMs = this.getTokenExpiryTime(token);
+    return !!expiryTimeMs && expiryTimeMs <= Date.now();
   }
 }

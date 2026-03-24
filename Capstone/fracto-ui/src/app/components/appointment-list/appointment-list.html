@@ -18,23 +18,29 @@
         <p><strong>Date:</strong> {{ appointmentDate(appointment) | date:'mediumDate' }}</p>
         <p><strong>Time:</strong> {{ appointment.timeSlot || '-' }}</p>
         <p><strong>Status:</strong> {{ effectiveStatus(appointment) }}</p>
+        @if (isEmergencyConsultation(appointment)) {
+          <p><strong>Consultation:</strong> Online Consultation</p>
+        }
         @if (doctorUnavailableMessage(appointment)) {
           <p class="doctor-unavailable-note">{{ doctorUnavailableMessage(appointment) }}</p>
         }
         @if (canRate(appointment)) {
           <div class="rating-row">
-            <label [for]="'rating-' + (appointment.appointmentId || appointment.id || $index)">Rate this doctor:</label>
-            <select
-              [id]="'rating-' + (appointment.appointmentId || appointment.id || $index)"
-              [ngModel]="currentRatingValue(appointment)"
-              (ngModelChange)="onRatingChange(appointment, $event)"
-            >
-              <option [ngValue]="5">5 - Excellent</option>
-              <option [ngValue]="4">4 - Very Good</option>
-              <option [ngValue]="3">3 - Good</option>
-              <option [ngValue]="2">2 - Fair</option>
-              <option [ngValue]="1">1 - Poor</option>
-            </select>
+            <span class="rating-label">Rate this doctor:</span>
+            <div class="stars" role="radiogroup" aria-label="Doctor rating">
+              @for (star of starValues(); track star) {
+                <button
+                  type="button"
+                  class="star-btn"
+                  [class.active]="isStarSelected(appointment, star)"
+                  (click)="onRatingChange(appointment, star)"
+                  [attr.aria-label]="'Rate ' + star + ' star' + (star > 1 ? 's' : '')"
+                >
+                  {{ isStarSelected(appointment, star) ? '★' : '☆' }}
+                </button>
+              }
+            </div>
+            <span class="rating-value">{{ currentRatingValue(appointment) }}/5</span>
             <button type="button" class="rate-btn" [disabled]="ratingSubmitting(appointment)" (click)="submitRating(appointment)">
               {{ ratingSubmitting(appointment) ? 'Submitting...' : 'Submit Rating' }}
             </button>
@@ -43,11 +49,14 @@
           <p class="rating-note">Rating submitted.</p>
         }
 
-        @if (canCancel(appointment)) {
-          <div class="actions-row">
+        <div class="actions-row">
+          @if (canCancel(appointment)) {
             <button type="button" class="cancel-btn" (click)="cancelAppointment(appointment)">Cancel Appointment</button>
-          </div>
-        }
+          }
+          @if (canJoinCall(appointment)) {
+            <button type="button" class="join-btn" (click)="joinCall(appointment)">Join Call</button>
+          }
+        </div>
       </article>
     }
   </div>

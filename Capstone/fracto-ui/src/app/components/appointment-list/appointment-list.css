@@ -74,6 +74,9 @@
 
 .actions-row {
   margin-top: 1rem;
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
 }
 
 .rating-row {
@@ -89,13 +92,46 @@
   font-weight: 600;
 }
 
-.rating-row select {
-  min-width: 180px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.5rem 0.65rem;
-  background: #fff;
+.rating-label {
   color: var(--text);
+  font-weight: 600;
+}
+
+.stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.2rem 0.3rem;
+  border-radius: 10px;
+  background: #f4f8ff;
+  border: 1px solid var(--border);
+}
+
+.star-btn {
+  background: transparent;
+  border: 0;
+  padding: 0.1rem 0.2rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #b9c7dc;
+  cursor: pointer;
+  box-shadow: none;
+  transform: none;
+}
+
+.star-btn:hover {
+  color: #f5b301;
+  box-shadow: none;
+  transform: none;
+}
+
+.star-btn.active {
+  color: #f5b301;
+}
+
+.rating-value {
+  color: var(--text);
+  font-weight: 600;
 }
 
 .rate-btn {
@@ -124,6 +160,16 @@
   border-radius: 12px;
   padding: 0.8rem 1rem;
   background: #d74f4f;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.join-btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  background: #1f7a3e;
   color: #ffffff;
   font-weight: 600;
   cursor: pointer;

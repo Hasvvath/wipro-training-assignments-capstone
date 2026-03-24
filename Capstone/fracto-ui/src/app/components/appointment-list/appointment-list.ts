@@ -5,6 +5,7 @@ import { Appointment, AppointmentService } from '../../services/appointment.serv
 import { getEffectiveAppointmentStatus, getRawAppointmentStatus, getAppointmentDateTime } from '../../services/appointment-status';
 import { AuthService } from '../../services/auth.service';
 import { Doctor, DoctorService } from '../../services/doctor.service';
+import { VideoConsultationService } from '../../services/video-consultation.service';
 
 @Component({
   selector: 'app-appointment-list',
@@ -17,6 +18,7 @@ export class AppointmentListComponent implements OnInit {
   private readonly appointmentService = inject(AppointmentService);
   private readonly authService = inject(AuthService);
   private readonly doctorService = inject(DoctorService);
+  private readonly videoConsultationService = inject(VideoConsultationService);
 
   appointments = signal<Appointment[]>([]);
   message = signal('');
@@ -39,6 +41,8 @@ export class AppointmentListComponent implements OnInit {
       next: (appointments) => {
         const visibleAppointments = (appointments ?? []).filter((appointment) => appointment.userId === currentUser?.id);
         this.appointments.set(visibleAppointments);
+        this.syncSubmittedRatingsFromData(visibleAppointments);
+        this.scheduleRemindersForEmergencyAppointments(visibleAppointments);
         this.message.set(visibleAppointments.length ? '' : 'No appointments found yet.');
         this.isLoading.set(false);
       },
@@ -158,6 +162,55 @@ export class AppointmentListComponent implements OnInit {
     });
   }
 
+  starValues(): number[] {
+    return [1, 2, 3, 4, 5];
+  }
+
+  isStarSelected(appointment: Appointment, starValue: number): boolean {
+    return starValue <= this.currentRatingValue(appointment);
+  }
+
+  isEmergencyConsultation(appointment: Appointment): boolean {
+    const type = (appointment.consultationType || '').toLowerCase();
+    if (type === 'onlineconsultation' || type.includes('online') || type.includes('video')) {
+      return true;
+    }
+
+    return !!this.videoConsultationService.getEmergencyMetaForAppointment(appointment);
+  }
+
+  meetingLink(appointment: Appointment): string {
+    const direct = (appointment.meetingLink || '').trim();
+    if (direct) {
+      return direct;
+    }
+
+    return this.videoConsultationService.getEmergencyMetaForAppointment(appointment)?.meetingLink || '';
+  }
+
+  canJoinCall(appointment: Appointment): boolean {
+    if (!this.isEmergencyConsultation(appointment)) {
+      return false;
+    }
+
+    const status = getRawAppointmentStatus(appointment).toLowerCase();
+    if (status.includes('cancel')) {
+      return false;
+    }
+
+    return !!this.meetingLink(appointment);
+  }
+
+  joinCall(appointment: Appointment): void {
+    const link = this.meetingLink(appointment);
+    if (!link) {
+      this.message.set('Meeting link not found for this appointment.');
+      return;
+    }
+
+    window.open(link, '_blank', 'noopener,noreferrer');
+  }
+
   submitRating(appointment: Appointment): void {
     const appointmentId = this.getAppointmentId(appointment);
     const doctorId = this.getDoctorId(appointment);
@@ -204,7 +257,18 @@ export class AppointmentListComponent implements OnInit {
         this.loadAppointments();
       },
       error: (error) => {
-        this.message.set(this.readApiError(error) || 'Unable to submit rating right now.');
+        const errorMessage = this.readApiError(error) || 'Unable to submit rating right now.';
+
+        if (errorMessage.toLowerCase().includes('already rated')) {
+          const updatedSubmitted = {
+            ...this.ratingSubmitted(),
+            [appointmentId]: true
+          };
+          this.ratingSubmitted.set(updatedSubmitted);
+          localStorage.setItem('ratedAppointments', JSON.stringify(updatedSubmitted));
+        }
+
+        this.message.set(errorMessage);
         this.isSubmittingRating.set({
           ...this.isSubmittingRating(),
           [appointmentId]: false
@@ -239,6 +303,24 @@ export class AppointmentListComponent implements OnInit {
     } catch {
       return {};
     }
+  }
+
+  private syncSubmittedRatingsFromData(appointments: Appointment[]): void {
+    const merged = { ...this.ratingSubmitted() };
+
+    appointments.forEach((appointment) => {
+      const appointmentId = this.getAppointmentId(appointment);
+      if (!appointmentId) {
+        return;
+      }
+
+      if (this.readExistingRating(appointment) > 0) {
+        merged[appointmentId] = true;
+      }
+    });
+
+    this.ratingSubmitted.set(merged);
+    localStorage.setItem('ratedAppointments', JSON.stringify(merged));
   }
 
   private readExistingRating(appointment: Appointment): number {
@@ -293,5 +375,20 @@ export class AppointmentListComponent implements OnInit {
     }
 
     return apiError?.message ?? '';
+  }
+
+  private scheduleRemindersForEmergencyAppointments(appointments: Appointment[]): void {
+    appointments.forEach((appointment) => {
+      if (!this.isEmergencyConsultation(appointment)) {
+        return;
+      }
+
+      const link = this.meetingLink(appointment);
+      if (!link) {
+        return;
+      }
+
+      this.videoConsultationService.scheduleAppointmentReminders(appointment, link);
+    });
   }
 }
