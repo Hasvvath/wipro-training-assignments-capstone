@@ -1,17 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
 :root {
   color-scheme: light;
-  font-family: Arial, Helvetica, sans-serif;
-  --page-bg: #eef5ff;
-  --page-bg-soft: #e6effd;
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  --page-bg: #eef4ff;
+  --page-bg-soft: #e4eeff;
   --surface: #ffffff;
-  --surface-alt: #f2f8ff;
-  --text: #10233f;
-  --muted: #59708f;
-  --primary: #3f86db;
-  --primary-dark: #2e67b8;
-  --border: #cfe0f2;
-  --shadow: 0 18px 40px rgba(41, 84, 138, 0.08);
-  background: linear-gradient(180deg, #f7fbff 0%, #e9f1fe 100%);
+  --surface-alt: #f4f8ff;
+  --text: #122640;
+  --muted: #566f8f;
+  --primary: #2f80dd;
+  --primary-dark: #1d5fab;
+  --primary-soft: #dcebff;
+  --border: #cfe0f5;
+  --ok-bg: #e9f9ef;
+  --ok-text: #1f6a3c;
+  --warn-bg: #fff4e4;
+  --warn-text: #8d6216;
+  --err-bg: #ffe7e7;
+  --err-text: #b72222;
+  --shadow: 0 16px 36px rgba(33, 75, 130, 0.1);
+  --shadow-soft: 0 8px 20px rgba(33, 75, 130, 0.07);
+  background: linear-gradient(180deg, #f6faff 0%, #e9f1fe 100%);
   color: var(--text);
 }
 
@@ -23,15 +33,30 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at 8% 10%, #ffffff 0%, transparent 26%),
-    radial-gradient(circle at 90% 12%, #f3f8ff 0%, transparent 33%),
-    linear-gradient(145deg, #f7fbff 0%, #ecf4ff 58%, #e4eeff 100%);
+    radial-gradient(circle at 8% 8%, #ffffff 0%, transparent 28%),
+    radial-gradient(circle at 92% 12%, #eff6ff 0%, transparent 33%),
+    linear-gradient(145deg, #f8fbff 0%, #edf4ff 58%, #e7efff 100%);
+  color: var(--text);
 }
 
 button,
 input,
 select {
   font: inherit;
+}
+
+button,
+a,
+input,
+select {
+  transition: all 0.2s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #8ebaf1;
+  box-shadow: 0 0 0 3px rgba(47, 128, 221, 0.15);
 }
 
 main,
@@ -45,7 +70,21 @@ nav {
 
 app-root {
   display: block;
-  width: min(96vw, 1560px);
+  width: min(97vw, 1620px);
   margin: 0 auto;
-  padding: 1.2rem;
+  padding: 1.15rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bfd3ee;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #edf3ff;
 }
